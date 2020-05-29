@@ -4,10 +4,6 @@
  */
 package vue;
 
-/*
- * 
- * Librairies importées
- */
 import modele.Connexion;
 import java.awt.event.*;
 import java.awt.*;
@@ -19,10 +15,10 @@ import java.util.logging.Logger;
 
 /**
  *
- * Affiche dans la fenetre graphique les champs de tables et les requetes de la
- * BDD
+ * Affiche la fenetre graphique 
+ * 
  *
- * @author segado
+ * @author Leo
  */
 public class Fenetre extends JFrame implements ActionListener, ItemListener {
 
@@ -32,7 +28,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
      */
 
     private Connexion maconnexion;
-    private final JLabel tab, req, res, lignes;
+    private final JLabel lundi, mardi, jeudi, mercredi,vendredi;
     private final JLabel nameBDD, requeteLabel;
     private final JTextField requeteTexte, nameBDDTexte;
     private final JButton exec, local;
@@ -46,11 +42,11 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
     public Fenetre() {
 
         // creation par heritage de la fenetre
-        super("Projet d'utilisation de JDBC dans MySQL");
+        super("Hyperplanning");
 
         // mise en page (layout) de la fenetre visible
         setLayout(new BorderLayout());
-        setBounds(0, 0, 400, 400);
+        setBounds(65, 27, 1400, 750);
         setResizable(true);
         setVisible(true);
 
@@ -71,10 +67,11 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         requeteTexte = new JTextField();
 
         // creation des labels
-        tab = new JLabel("Tables", JLabel.CENTER);
-        lignes = new JLabel("Lignes", JLabel.CENTER);
-        req = new JLabel("Requetes de sélection", JLabel.CENTER);
-        res = new JLabel("Résultats requête", JLabel.CENTER);
+        lundi = new JLabel("Lundi", JLabel.CENTER);
+        mardi = new JLabel("Mardi", JLabel.CENTER);
+        mercredi = new JLabel("Mercredi", JLabel.CENTER);
+        jeudi = new JLabel("Jeudi", JLabel.CENTER);
+        vendredi = new JLabel("Vendredi", JLabel.CENTER);
         nameBDD = new JLabel("nom base :", JLabel.CENTER);
         requeteLabel = new JLabel("Entrez votre requete de sélection :", JLabel.CENTER);
 
@@ -97,10 +94,11 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         p0.add(nameBDD);
         p0.add(nameBDDTexte);
         p0.add(local);
-        p1.add(tab);
-        p1.add(lignes);
-        p1.add(req);
-        p1.add(res);
+        p1.add(lundi);
+        p1.add(mardi);
+        p1.add(mercredi);
+        p1.add(jeudi);
+        p1.add(vendredi);
         nord.add("North", p0);
         nord.add("North", p1);
         p2.add(listeDeTables);
@@ -118,10 +116,10 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         listeDeRequetes.addItemListener(this);
 
         // couleurs des objets graphiques
-        tab.setBackground(Color.MAGENTA);
-        lignes.setBackground(Color.MAGENTA);
-        req.setBackground(Color.MAGENTA);
-        res.setBackground(Color.MAGENTA);
+        lundi.setBackground(Color.MAGENTA);
+        mercredi.setBackground(Color.MAGENTA);
+        mardi.setBackground(Color.MAGENTA);
+        jeudi.setBackground(Color.MAGENTA);
         listeDeTables.setBackground(Color.CYAN);
         fenetreLignes.setBackground(Color.WHITE);
         listeDeRequetes.setBackground(Color.GREEN);
@@ -137,7 +135,8 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent evt) {
-                System.exit(0); // tout fermer												System.exit(0); // tout fermer
+              //  System.exit(0); // tout fermer 
+              dispose();    //On ferme juste la fenetre active
             }
         });
     }
