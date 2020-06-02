@@ -5,12 +5,17 @@
  */
 package modele;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Raphael
  */
 public class Seance_enseignantsDAO extends DAO<Seance_enseignants>{
 
+    public Seance_enseignantsDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
     public void create(Seance_enseignants obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
