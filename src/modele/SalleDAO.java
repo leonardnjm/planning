@@ -12,7 +12,9 @@ import java.sql.SQLException;
  * @author Raphael
  */
 public class SalleDAO extends DAO<Salle>{
-
+ public SalleDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
     public void create(Salle obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
