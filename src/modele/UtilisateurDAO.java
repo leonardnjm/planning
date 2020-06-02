@@ -1,0 +1,65 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modele;
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+/**
+ *
+ * @author Raphael
+ */
+public class UtilisateurDAO extends DAO<Utilisateur>{
+
+    public UtilisateurDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
+    @Override
+    public void create(Utilisateur obj) {
+        try {
+            prepstmt=conna.prepareStatement("INSERT INTO utilisateurs VALUES (?, ?, ?,?,?,?)");
+            prepstmt.setInt(1, obj.getid());
+            prepstmt.setString(2, obj.getemail());
+            prepstmt.setString(3, obj.getpasswd());
+            prepstmt.setString(4, obj.getnom());
+            prepstmt.setString(5, obj.getprenom());
+            prepstmt.setInt(6, obj.getdroit());
+            prepstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UtilisateurDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public boolean delete(Utilisateur obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(Utilisateur obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Utilisateur find(int id) {
+        Utilisateur a=new Utilisateur();
+        try{
+        prepstmt=conna.prepareStatement("SELECT * FROM utilisateurs WHERE id="+id);
+        rset=prepstmt.executeQuery();
+        if(rset.first())
+        {
+            a=new Utilisateur(id,rset.getString("email"),rset.getString("passwd"),rset.getString("nom"),rset.getString("prenom"),rset.getInt("droit"));
+        }
+        
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+       return a;    
+    }
+    
+}

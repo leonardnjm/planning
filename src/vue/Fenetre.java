@@ -28,7 +28,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
      */
 
     private Connexion maconnexion;
-    private final JLabel lundi, mardi, jeudi, mercredi,vendredi;
+    private final JLabel lundi, mardi, jeudi, mercredi,vendredi,samedi;
     private final JLabel nameBDD, requeteLabel;
     private final JTextField requeteTexte, nameBDDTexte;
     private final JButton exec, local;
@@ -72,6 +72,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         mercredi = new JLabel("Mercredi", JLabel.CENTER);
         jeudi = new JLabel("Jeudi", JLabel.CENTER);
         vendredi = new JLabel("Vendredi", JLabel.CENTER);
+        samedi = new JLabel("Samedi", JLabel.CENTER);
         nameBDD = new JLabel("nom base :", JLabel.CENTER);
         requeteLabel = new JLabel("Entrez votre requete de sélection :", JLabel.CENTER);
 
@@ -99,6 +100,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         p1.add(mercredi);
         p1.add(jeudi);
         p1.add(vendredi);
+        p1.add(samedi);
         nord.add("North", p0);
         nord.add("North", p1);
         p2.add(listeDeTables);
@@ -288,7 +290,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
                 try {
                     // tentative de connexion si les 4 attributs sont remplis
                     //maconnexion = new Connexion("jps", "root", "");
-                    maconnexion = new Connexion(nameBDDTexte.getText(), "root", "");
+                    maconnexion = new Connexion1111(nameBDDTexte.getText(), "root", "");
 
                     // effacer les listes de tables et de requêtes
                     listeDeTables.removeAll();

@@ -60,7 +60,10 @@ public class Connexion {
         // création d'un ordre SQL (statement)
         stmt = conn.createStatement();
     }
-
+    
+    public Connection getco(){
+        return conn;
+    }
 
     /**
      * Méthode qui ajoute la table en parametre dans son ArrayList
