@@ -11,32 +11,35 @@ import java.sql.SQLException;
  *
  * @author Raphael
  */
-public class EtudiantDAO extends DAO<Etudiantt>{
+public class EtudiantDAO extends DAO<Etudiant>{
 
+    public EtudiantDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
-    public void create(Etudiantt obj) {
+    public void create(Etudiant obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(Etudiantt obj) {
+    public void delete(Etudiant obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Etudiantt obj) {
+    public void update(Etudiant obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Etudiantt find(int id) {
-        Etudiantt a=new Etudiantt();
+    public Etudiant find(int id) {
+        Etudiant a=new Etudiant();
         try{
         prepstmt=conna.prepareStatement("SELECT * FROM etudiant WHERE id_utilisateur="+id);
         rset=prepstmt.executeQuery();
         if(rset.first())
         {
-            a=new Etudiantt(id,rset.getInt("numero"),rset.getInt("id_groupe"));
+            a=new Etudiant(id,rset.getInt("numero"),rset.getInt("id_groupe"));
         }
         
         }catch(SQLException e){

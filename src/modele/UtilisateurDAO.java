@@ -36,12 +36,12 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
     }
 
     @Override
-    public boolean delete(Utilisateur obj) {
+    public void delete(Utilisateur obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean update(Utilisateur obj) {
+    public void update(Utilisateur obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

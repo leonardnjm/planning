@@ -15,6 +15,9 @@ import java.util.logging.Logger;
  */
 public class SeanceDAO extends DAO<Seance>{
 
+     public SeanceDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
     public void create(Seance obj) {
     try {

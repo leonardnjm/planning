@@ -13,6 +13,9 @@ import java.sql.SQLException;
  */
 public class SiteDAO extends DAO<Site>{
 
+        public SiteDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
     public void create(Site obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

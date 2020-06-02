@@ -13,6 +13,9 @@ import java.sql.SQLException;
  */
 public class PromotionDAO extends DAO<Promotion>{
 
+     public PromotionDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
     public void create(Promotion obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

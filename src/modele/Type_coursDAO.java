@@ -15,6 +15,9 @@ import java.util.logging.Logger;
  */
 public class Type_coursDAO extends DAO<Type_cours>{
 
+     public Type_coursDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
     public void create(Type_cours obj){
         try {

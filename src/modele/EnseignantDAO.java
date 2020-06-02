@@ -13,6 +13,9 @@ import java.sql.SQLException;
  */
 public class EnseignantDAO extends DAO<Enseignant>{
 
+    public EnseignantDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
     public void create(Enseignant obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

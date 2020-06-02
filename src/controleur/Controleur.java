@@ -52,6 +52,7 @@ public class Controleur {
         Controleur c = new Controleur(v);
         c.initController();
         //Fenetre f = new Fenetre();
+
     }
 }
 

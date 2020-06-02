@@ -13,6 +13,9 @@ import java.sql.SQLException;
  */
 public class Seance_groupesDAO extends DAO<Seance_groupes>{
 
+    public Seance_groupesDAO() throws SQLException, ClassNotFoundException{
+         super();
+     } 
     @Override
     public void create(Seance_groupes obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
