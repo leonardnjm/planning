@@ -51,4 +51,30 @@ public class Utilisateur {
     public int getdroit(){
         return droit;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setDroit(int droit) {
+        this.droit = droit;
+    }
+    
+    
 }

@@ -65,6 +65,40 @@ public class Seance {
     public int getidtype(){
         return id_type;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setSemaine(int semaine) {
+        this.semaine = semaine;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setHeure_debut(int heure_debut) {
+        this.heure_debut = heure_debut;
+    }
+
+    public void setHeure_fin(int heure_fin) {
+        this.heure_fin = heure_fin;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
+    }
+
+    public void setId_cours(int id_cours) {
+        this.id_cours = id_cours;
+    }
+
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
+    }
+    
+    
     
     
 }

@@ -6,6 +6,7 @@ package controleur;
 
 import vue.Fenetre;
 import vue.Login;
+import vue.Cours;
 
 import javax.swing.JOptionPane;
 
@@ -51,7 +52,9 @@ public class Controleur {
         Login v = new Login("Log in");
         Controleur c = new Controleur(v);
         c.initController();
-        //Fenetre f = new Fenetre();
+        
+       // Cours a= new Cours();
+      //  Fenetre f = new Fenetre();
 
     }
 }

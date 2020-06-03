@@ -26,4 +26,14 @@ public class Type_cours {
     public String getnom(){
         return nom;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    
+    
 }

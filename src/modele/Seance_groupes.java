@@ -20,4 +20,22 @@ public class Seance_groupes {
         id_seance=s;
         id_groupe=g;
     }
+
+    public int getId_seance() {
+        return id_seance;
+    }
+
+    public void setId_seance(int id_seance) {
+        this.id_seance = id_seance;
+    }
+
+    public int getId_groupe() {
+        return id_groupe;
+    }
+
+    public void setId_groupe(int id_groupe) {
+        this.id_groupe = id_groupe;
+    }
+    
+    
 }

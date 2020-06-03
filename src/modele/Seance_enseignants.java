@@ -20,4 +20,21 @@ public class Seance_enseignants {
         id_seance=s;
         id_enseignant=e;
     }
+
+    public int getId_seance() {
+        return id_seance;
+    }
+
+    public void setId_seance(int id_seance) {
+        this.id_seance = id_seance;
+    }
+
+    public int getId_enseignant() {
+        return id_enseignant;
+    }
+
+    public void setId_enseignant(int id_enseignant) {
+        this.id_enseignant = id_enseignant;
+    }
+    
 }

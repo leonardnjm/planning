@@ -27,4 +27,37 @@ public class Salle {
         capacite=c;
         id_site=s;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public int getCapacite() {
+        return capacite;
+    }
+
+    public void setCapacite(int capacite) {
+        this.capacite = capacite;
+    }
+
+    public int getId_site() {
+        return id_site;
+    }
+
+    public void setId_site(int id_site) {
+        this.id_site = id_site;
+    }
+    
 }
