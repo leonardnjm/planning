@@ -61,9 +61,6 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
 
         nameBDDTexte = new JTextField();
         
-        
-    
-     
         lu = new JPanel();
         ma = new JPanel();
         me = new JPanel();
@@ -71,8 +68,8 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         ve = new JPanel();
         sa = new JPanel();
         p = new JPanel();
-       
-
+      
+        
         // creation des labels
         lundi = new JLabel("Lundi", JLabel.CENTER);
         mardi = new JLabel("Mardi", JLabel.CENTER);
@@ -93,8 +90,8 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         west = new JPanel();
 
         // mise en page des panneaux
-        p0.setLayout(new GridLayout(1, 3));
-        p1.setLayout(new GridLayout(1, 4));
+        p0.setLayout(new GridLayout(1, 3)); //setting grid layout of 1 rows and 3 columns  
+        p1.setLayout(new GridLayout(1, 6));
         nord.setLayout(new GridLayout(2, 1));
         p2.setLayout(new GridLayout(1, 4));
         p3.setLayout(new GridLayout(1, 3));
@@ -115,6 +112,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         p1.add(jeudi);
         p1.add(vendredi);
         p1.add(samedi);
+        
         nord.add("North", p0);
         nord.add("North",p1);
         

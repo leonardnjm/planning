@@ -20,7 +20,7 @@ public abstract class DAO<T> {
         protected Connection conna;
 
        public DAO() throws SQLException, ClassNotFoundException{
-        maconnexion=new Connexion("nouveau","root","");
+        maconnexion=new Connexion("planning","root","");
         conna=maconnexion.getco();
         }
    
@@ -48,5 +48,7 @@ public abstract class DAO<T> {
   * @return T
   */
   public abstract T find(int id);
+    public abstract T trouver(String a);
+
 }
 

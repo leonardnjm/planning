@@ -19,8 +19,8 @@ public class Utilisateur {
     
     public Utilisateur(){
     id=0;
-    email="test";
-    passwd="passwordtest";
+    email="";
+    passwd="";
     nom="nomtest";
     prenom="prenomtest";
     droit=1;
@@ -33,22 +33,22 @@ public class Utilisateur {
     prenom=p;
     droit=d;
     }
-    public int getid(){
+    public int getId(){
         return id;
     }
-    public String getemail(){
+    public String getEmail(){
         return email;
     }
-    public String getpasswd(){
+    public String getPasswd(){
         return passwd;
     }
-    public String getnom(){
+    public String getNom(){
         return nom;
     }
-    public String getprenom(){
+    public String getPrenom(){
         return prenom;
     }
-    public int getdroit(){
+    public int getDroit(){
         return droit;
     }
 

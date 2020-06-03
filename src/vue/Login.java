@@ -41,7 +41,7 @@ public class Login {
   frame.setVisible(true);
   
   // Creatation des elements swing
-  loginLabel = new JLabel("Username :");
+  loginLabel = new JLabel("Email :");
   passwordLabel = new JLabel("Password :");
   loginTextfield = new JTextField();
   passwordTextfield = new JTextField();
