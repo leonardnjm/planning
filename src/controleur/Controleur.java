@@ -110,7 +110,7 @@ public class Controleur {
              {
                     this.droit=k.getDroit();
              }
-                 else{
+                 else {
                   JOptionPane.showMessageDialog(new JFrame(),
                     "Email or Password are incorrect",
                     "Error",
@@ -177,7 +177,7 @@ public class Controleur {
     
 
 
-}
+    }
 }
 
 
