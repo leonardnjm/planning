@@ -14,6 +14,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -44,7 +45,7 @@ public class Login {
   loginLabel = new JLabel("Email :");
   passwordLabel = new JLabel("Password :");
   loginTextfield = new JTextField();
-  passwordTextfield = new JTextField();
+  passwordTextfield = new JPasswordField();
 
   loginbtn = new JButton("Log in");
   exit = new JButton("Exit");

@@ -12,6 +12,12 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.github.lgooddatepicker.components.DateTimePicker;
+import com.github.lgooddatepicker.components.TimePicker;
+import com.github.lgooddatepicker.components.TimePickerSettings;
+import com.github.lgooddatepicker.components.TimePickerSettings.TimeArea;
 
 /**
  *
@@ -34,6 +40,9 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
     private final JTextField nameBDDTexte;
     private final JButton local;
 
+        private DateTimePicker dateTimePicker1;
+        private DatePicker datePicker1;
+    
     /**
      * Constructeur qui initialise tous les objets graphiques de la fenetre
      */
@@ -51,6 +60,9 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         // creation des boutons
         //connect = new JButton("Connexion ECE");
         local = new JButton("Connexion locale");
+        
+         datePicker1 = new DatePicker();
+            add(datePicker1);
        
 
         // creation des listes pour les tables et les requetes
@@ -101,6 +113,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
 
         
         //affichage header
+        p0.add(datePicker1);
         p0.add(nameBDD);
         p0.add(nameBDDTexte);
         p0.add(local);
@@ -126,6 +139,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         p2.add(je);
         p2.add(ve);
         p2.add(sa);
+        
        
         
         //footer
@@ -168,6 +182,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
     jlabel.setHorizontalAlignment(JLabel.LEFT);
     jlabel.setVerticalAlignment(JLabel.TOP);
     p.add("West",jlabel);
+    
         
     }
 

@@ -16,6 +16,10 @@ import javax.swing.JOptionPane;
 import modele.DAO;
 import modele.UtilisateurDAO;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+//test
+
 
 
 /**
@@ -113,9 +117,7 @@ public class Controleur {
  }
  
  
-  
-    
-    
+       
     /**
      *
      * une methode principal (main) pour lancer l'application
@@ -127,13 +129,15 @@ public class Controleur {
              // creation de la fenetre
              
              Utilisateur m = new Utilisateur();
-             
+          
              Login v = new Login("Log in");
              Controleur c = new Controleur(v,m);
              c.initController();
 
-             System.out.println("pass : " + m.getPasswd());
-
+         
+            
+           
+          
              // Cours a= new Cours();
              //  Fenetre f = new Fenetre();
    
