@@ -25,7 +25,7 @@ import javax.swing.JFrame;
  * @author Raphael
  */
 public class Controleur {
-    
+     private int droit;
      private Login login;
      private Utilisateur utilisateur;
     
@@ -61,9 +61,14 @@ public class Controleur {
   
  
  }
-   
+  private int getd(){
+      return droit;
+  }
+   private void exit(){
+       System.exit(0);
+   }
  
-  //  System.out.println("email : " + utilisateur.getEmail());
+//  System.out.println("email : " + utilisateur.getEmail());
 //  System.out.println("pass : " + utilisateur.getPasswd());
   
   private void LoginBtn() throws SQLException, ClassNotFoundException {
@@ -77,41 +82,19 @@ public class Controleur {
              
              if(utilisateur.getPasswd().equals(k.getPasswd()))
              {
-                     
-                 switch (k.getDroit()){
-                 
-                     case 1:
-                         Fenetre f = new Fenetre();
-                         break;
-                
-                     case 2:
-                        
-                         break;
-                         
-                     case 3:
-                        
-                         break;
-                         
-                     case 4:
-                        
-                         break;
-                         
-                    default:
-                       JOptionPane.showMessageDialog(new JFrame(),
+                    this.droit=k.getDroit();
+             }
+                 else{
+                                              JOptionPane.showMessageDialog(new JFrame(),
                     "Email or Password are incorrect",
                     "Error",
-                    JOptionPane.ERROR_MESSAGE); 
-                         
-                 }
+                    JOptionPane.ERROR_MESSAGE);   
+                         }
                            
 
              }
                                     
- }
- private void exit() {
-  System.exit(0);
- }
- 
+
  
   
     
@@ -133,14 +116,41 @@ public class Controleur {
              c.initController();
 
              System.out.println("pass : " + m.getPasswd());
+             while(c.getd()==0)
+                 try {
+                     Thread.sleep(3 * 1000);
+                 } catch (InterruptedException ex) {
+                     Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                 switch (c.getd()){
+                 
+                     case 1:
+                         Fenetre f = new Fenetre();
+                         break;
+                
+                     case 2:
+                        
+                         break;
+                         
+                     case 3:
+                        
+                         break;
+                         
+                     case 4:
+                        
+                         break;
+                         
+                    default:
 
+                         
+                 }
              // Cours a= new Cours();
              //  Fenetre f = new Fenetre();
    
     
-}
+
 
 }
-
+}
 
 
