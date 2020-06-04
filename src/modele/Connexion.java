@@ -51,7 +51,7 @@ public class Connexion {
         
        
         // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-        String urlDatabase = "jdbc:mysql://localhost:3308/" + nameDatabase;
+        String urlDatabase = "jdbc:mysql://localhost:3306/" + nameDatabase;
        // String urlDatabase = "jdbc:mysql://localhost:3308/jps?characterEncoding=latin1";
 
         //création d'une connexion JDBC à la base 

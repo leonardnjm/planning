@@ -9,9 +9,8 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.github.lgooddatepicker.components.DateTimePicker;
@@ -34,15 +33,14 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
     private final JPanel lu,ma,me,je,ve,sa; //panels de chaque jour
     private final JPanel p0, p1, nord, p2, p3, west,p;
     
+    
+    private final DatePicker datePicker1;
     //headers
     
     private final JLabel nameBDD;
     private final JTextField nameBDDTexte;
     private final JButton local;
 
-        private DateTimePicker dateTimePicker1;
-        private DatePicker datePicker1;
-    
     /**
      * Constructeur qui initialise tous les objets graphiques de la fenetre
      */
@@ -55,20 +53,22 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         setLayout(new BorderLayout());
         setBounds(65, 27, 1400, 750);
         setResizable(true);
-        setVisible(true);
+        
 
         // creation des boutons
         //connect = new JButton("Connexion ECE");
         local = new JButton("Connexion locale");
-        
-         datePicker1 = new DatePicker();
-            add(datePicker1);
        
 
         // creation des listes pour les tables et les requetes
        // listeDeTables = new java.awt.List(10, false);
        // listeDeRequetes = new java.awt.List(10, false);
 
+        //Initialisation du calendrier
+            datePicker1 = new DatePicker();
+            add(datePicker1);
+       
+       
         // creation des textes
 
         nameBDDTexte = new JTextField();
@@ -139,7 +139,6 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         p2.add(je);
         p2.add(ve);
         p2.add(sa);
-        
        
         
         //footer
@@ -182,8 +181,8 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
     jlabel.setHorizontalAlignment(JLabel.LEFT);
     jlabel.setVerticalAlignment(JLabel.TOP);
     p.add("West",jlabel);
-    
         
+    setVisible(true);
     }
 
         // pour fermer la fenetre
@@ -206,6 +205,3 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
-
-
-
