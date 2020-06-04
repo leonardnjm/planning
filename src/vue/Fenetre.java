@@ -139,7 +139,6 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         p2.add(je);
         p2.add(ve);
         p2.add(sa);
-       
         
         //footer
 //        p3.add(requeteLabel);
@@ -167,6 +166,10 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         // disposition geographique des panneaux
         add("North", nord);
         add("Center", p2);
+       Planning a= new Planning();
+       //a.setOpaque(true);
+
+        add("Center", a);
         add("South", p3);
         add("West",p);
         

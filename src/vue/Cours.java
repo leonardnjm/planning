@@ -6,26 +6,24 @@
 package vue;
 
 import java.awt.GridLayout; 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
  
-public class Cours extends JFrame{
+public class Cours extends JPanel{
   public Cours(){
    
-    this.setTitle("Bouton");
-    this.setSize(1400, 750);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setLocationRelativeTo(null);
     //On définit le layout à utiliser sur le content pane
     //Trois lignes sur deux colonnes
-    this.setLayout(new GridLayout(11, 6));
-    //On ajoute le bouton au content pane de la JFrame
-    for(int i =0; i<66; i++)
-    {
-     
-    this.getContentPane().add(new JButton(""+i));
-    }
-   
+    //On ajoute le bouton au content pane de la JFrame    
+    JLabel a =new JLabel("aaa");
+    this.add(a);
+        this.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(10, 10, 10, 10), new EtchedBorder()));
+
     this.setVisible(true);
   }      
 }

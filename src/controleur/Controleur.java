@@ -129,7 +129,8 @@ public class Controleur {
                  switch (c.getd()){
                  
                      case 1:
-                         Fenetre f = new Fenetre();
+                       //  Planning f = new Planning();
+                         Fenetre a =new Fenetre();
                          break;
                 
                      case 2:
