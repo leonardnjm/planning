@@ -62,5 +62,10 @@ public class SeanceDAO extends DAO<Seance>{
         }
        return a;    
     }
+
+    @Override
+    public Seance trouver(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

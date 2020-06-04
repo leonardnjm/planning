@@ -53,7 +53,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
         rset=prepstmt.executeQuery();
         if(rset.first())
         {
-            a=new Utilisateur(id,rset.getString("email"),rset.getString("passwd"),rset.getString("nom"),rset.getString("prenom"),rset.getInt("droit"));
+            a=new Utilisateur(id,rset.getString("email"),rset.getString("passwd"),rset.getString("nom"),rset.getString("premon"),rset.getInt("droit"));
         }
         
         }catch(SQLException e){
@@ -66,11 +66,14 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
     public Utilisateur trouver(String a) {
         Utilisateur b=new Utilisateur();
         try{
-        prepstmt=conna.prepareStatement("SELECT * FROM utilisateurs WHERE email="+a);
+                  
+        prepstmt=conna.prepareStatement("SELECT * FROM `utilisateurs` WHERE email='"+a+"'");
+                       
         rset=prepstmt.executeQuery();
+                           
         if(rset.first())
-        {
-            b=new Utilisateur(rset.getInt("id"),rset.getString("email"),rset.getString("passwd"),rset.getString("nom"),rset.getString("prenom"),rset.getInt("droit"));
+        {                              
+            b=new Utilisateur(rset.getInt("id"),rset.getString("email"),rset.getString("passwd"),rset.getString("nom"),rset.getString("premon"),rset.getInt("droit"));
         }
         
         }catch(SQLException e){

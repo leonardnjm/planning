@@ -46,5 +46,10 @@ public class Seance_groupesDAO extends DAO<Seance_groupes>{
             e.printStackTrace();
         }
        return a;     }
+
+    @Override
+    public Seance_groupes trouver(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

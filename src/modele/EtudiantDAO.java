@@ -47,4 +47,9 @@ public class EtudiantDAO extends DAO<Etudiant>{
         }
        return a;       
     }
+
+    @Override
+    public Etudiant trouver(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

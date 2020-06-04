@@ -46,5 +46,10 @@ public class SalleDAO extends DAO<Salle>{
         }
        return a; 
     }
+
+    @Override
+    public Salle trouver(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

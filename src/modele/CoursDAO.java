@@ -65,5 +65,10 @@ public class CoursDAO extends DAO<Cours>{
         }
        return a; 
     }
+
+    @Override
+    public Cours trouver(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

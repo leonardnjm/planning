@@ -46,5 +46,10 @@ Enseignant a=new Enseignant();
         }
        return a;     
     }
+
+    @Override
+    public Enseignant trouver(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

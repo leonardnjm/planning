@@ -47,5 +47,10 @@ public class SiteDAO extends DAO<Site>{
         }
        return a; 
     }    
+
+    @Override
+    public Site trouver(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
     

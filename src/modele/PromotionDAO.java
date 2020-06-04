@@ -47,4 +47,9 @@ public class PromotionDAO extends DAO<Promotion>{
         }
        return a;    
     }
+
+    @Override
+    public Promotion trouver(String a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

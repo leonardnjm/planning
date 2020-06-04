@@ -15,6 +15,7 @@ import vue.Cours;
 import javax.swing.JOptionPane;
 import modele.DAO;
 import modele.UtilisateurDAO;
+import javax.swing.JFrame;
 
 
 /**
@@ -34,7 +35,7 @@ public class Controleur {
   initView();
  }
    
-   private void saveInfo() {
+   private void saveInfo() throws SQLException, ClassNotFoundException {
   utilisateur.setEmail(login.getLoginTextfield().getText());
   utilisateur.setPasswd(login.getPasswordTextfield().getText());
   LoginBtn();
@@ -47,29 +48,65 @@ public class Controleur {
  }
 
   public void initController() {
-  login.getLoginBtn().addActionListener(e -> saveInfo());
+  login.getLoginBtn().addActionListener(e -> {
+      try {
+          saveInfo();
+      } catch (SQLException ex) {
+          Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (ClassNotFoundException ex) {
+          Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+      }
+  });
   login.getExit().addActionListener(e -> exit());
+  
+ 
  }
    
  
-  
+  //  System.out.println("email : " + utilisateur.getEmail());
+//  System.out.println("pass : " + utilisateur.getPasswd());
   
   private void LoginBtn() throws SQLException, ClassNotFoundException {
   //JOptionPane.showMessageDialog(null, "Hello ", "Info", JOptionPane.INFORMATION_MESSAGE);
-  Fenetre f = new Fenetre();
-  System.out.println("email : " + utilisateur.getEmail());
-  System.out.println("pass : " + utilisateur.getPasswd());
-  
+
              DAO<Utilisateur> classeDao = new UtilisateurDAO();
              Utilisateur k=new Utilisateur();
-             k=classeDao.trouver(utilisateur.getEmail());
-             if(utilisateur.getPasswd()==k.getPasswd())
-             {
-                   System.out.println("SOLENE EST MECHANTEEEEEE");
-             }
-                                System.out.println(""+k.getNom());
+          //   int resultat = Integer.parseInt(utilisateur.getEmail());
 
-  
+             k=classeDao.trouver(utilisateur.getEmail());
+             
+             if(utilisateur.getPasswd().equals(k.getPasswd()))
+             {
+                     
+                 switch (k.getDroit()){
+                 
+                     case 1:
+                         Fenetre f = new Fenetre();
+                         break;
+                
+                     case 2:
+                        
+                         break;
+                         
+                     case 3:
+                        
+                         break;
+                         
+                     case 4:
+                        
+                         break;
+                         
+                    default:
+                       JOptionPane.showMessageDialog(new JFrame(),
+                    "Email or Password are incorrect",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE); 
+                         
+                 }
+                           
+
+             }
+                                    
  }
  private void exit() {
   System.exit(0);
@@ -95,6 +132,7 @@ public class Controleur {
              Controleur c = new Controleur(v,m);
              c.initController();
 
+             System.out.println("pass : " + m.getPasswd());
 
              // Cours a= new Cours();
              //  Fenetre f = new Fenetre();

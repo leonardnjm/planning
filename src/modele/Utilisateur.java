@@ -23,7 +23,7 @@ public class Utilisateur {
     passwd="";
     nom="nomtest";
     prenom="prenomtest";
-    droit=1;
+    droit=0;
     }
     public Utilisateur(int i,String e,String pass,String n,String p,int d){
     id=i;
@@ -32,6 +32,10 @@ public class Utilisateur {
     nom=n;
     prenom=p;
     droit=d;
+    }
+    public Utilisateur(String e,String pass){
+    email=e;
+    passwd=pass;    
     }
     public int getId(){
         return id;
