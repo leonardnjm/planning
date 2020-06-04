@@ -29,7 +29,7 @@ import javax.swing.JPanel;
  * @author Raphael
  */
 public class Controleur {
-    
+     private int droit;
      private Login login;
      private Utilisateur utilisateur;
     
@@ -65,9 +65,14 @@ public class Controleur {
   
  
  }
-   
+  private int getd(){
+      return droit;
+  }
+   private void exit(){
+       System.exit(0);
+   }
  
-  //  System.out.println("email : " + utilisateur.getEmail());
+//  System.out.println("email : " + utilisateur.getEmail());
 //  System.out.println("pass : " + utilisateur.getPasswd());
   
   private void LoginBtn() throws SQLException, ClassNotFoundException {
@@ -81,8 +86,47 @@ public class Controleur {
              
              if(utilisateur.getPasswd().equals(k.getPasswd()))
              {
-                     
-                 switch (k.getDroit()){
+                    this.droit=k.getDroit();
+             }
+                 else{
+                                              JOptionPane.showMessageDialog(new JFrame(),
+                    "Email or Password are incorrect",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);   
+                         }
+                           
+
+             }
+                                    
+
+ 
+  
+    
+    
+    /**
+     *
+     * une methode principal (main) pour lancer l'application
+     *
+     * @param s
+     */
+    
+    public static void main(String[] s) {
+             // creation de la fenetre
+             
+             Utilisateur m = new Utilisateur();
+          
+             Login v = new Login("Log in");
+             Controleur c = new Controleur(v,m);
+             c.initController();
+
+             System.out.println("pass : " + m.getPasswd());
+             while(c.getd()==0)
+                 try {
+                     Thread.sleep(3 * 1000);
+                 } catch (InterruptedException ex) {
+                     Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                 switch (c.getd()){
                  
                      case 1:
                          Fenetre f = new Fenetre();
@@ -101,50 +145,16 @@ public class Controleur {
                          break;
                          
                     default:
-                       JOptionPane.showMessageDialog(new JFrame(),
-                    "Email or Password are incorrect",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE); 
+
                          
                  }
-                           
-
-             }
-                                    
- }
- private void exit() {
-  System.exit(0);
- }
- 
- 
-       
-    /**
-     *
-     * une methode principal (main) pour lancer l'application
-     *
-     * @param s
-     */
-    
-    public static void main(String[] s) {
-             // creation de la fenetre
-             
-             Utilisateur m = new Utilisateur();
-          
-             Login v = new Login("Log in");
-             Controleur c = new Controleur(v,m);
-             c.initController();
-
-         
-            
-           
-          
              // Cours a= new Cours();
              //  Fenetre f = new Fenetre();
    
     
-}
+
 
 }
-
+}
 
 
