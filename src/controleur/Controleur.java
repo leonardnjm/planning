@@ -141,7 +141,6 @@ public class Controleur {
              Controleur c = new Controleur(v,m);
              c.initController();
 
-             System.out.println("pass : " + m.getPasswd());
              while(c.getd()==0)
                  try {
                      Thread.sleep(3 * 1000);
