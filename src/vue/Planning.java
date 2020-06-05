@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+
 public class Planning extends JPanel{
     public Planning(){
     //On définit le layout à utiliser sur le content pane
