@@ -97,8 +97,4 @@ public class Seance {
     public void setId_type(int id_type) {
         this.id_type = id_type;
     }
-    
-    
-    
-    
 }

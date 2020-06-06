@@ -19,7 +19,7 @@ import javax.swing.border.EtchedBorder;
 public class Cours extends JPanel{
   public Cours(String cou,String prof, String etat, String salle, String site, String type){
                   this.setLayout(new GridLayout(4, 0));
-    if(type.equals("zoom")) 
+    if(type.equals("Zoom")) 
     {
         JLabel a=new JLabel(cou);
         JLabel b=new JLabel(prof);
@@ -67,7 +67,7 @@ public class Cours extends JPanel{
   
   public Cours(String cou,String grp, String etat, String salle, String site, String type,String prom){
                   this.setLayout(new GridLayout(4, 0));
-    if(type.equals("zoom")) 
+    if(type.equals("Zoom")) 
     {
         JLabel a=new JLabel(cou);
         JLabel b=new JLabel(grp+"- Promo:"+prom);

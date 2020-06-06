@@ -53,17 +53,20 @@ private JButton b = new JButton ("AJOUTER UNE SEANCE");
                  JTabbedPane tabbedPane = new JTabbedPane();
         ImageIcon icon = createImageIcon("/images/test.png");
         AdminAjoute ajoute = new AdminAjoute();
-        
+    //    System.out.println("Veuillez saisir un mot :");
+
         JComponent panel1 = ajoute;
         tabbedPane.addTab("Ajouter Cours", icon, panel1,
                 "Ajouter cours pour un eleve ou prof");
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-        
+    //    System.out.println("Veuillez saisir un mot :");
+
         JComponent panel2 = makeTextPanel("remplacer par fonction");
         tabbedPane.addTab("Acceder aux cours", icon, panel2,
                 "Acceder a tout les cours");
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
-        
+  //      System.out.println("Veuillez saisir un mot :");
+
         JComponent panel3 = makeTextPanel("remplacer par fonction");
         tabbedPane.addTab("Annule un cours", icon, panel3,
                 "Annule un cours d'un eleve ou prof");

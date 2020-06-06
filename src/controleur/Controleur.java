@@ -160,8 +160,7 @@ public class Controleur {
                  {
                      try {
                          //  Planning f = new Planning();
-                         
-                         //  Fenetre a =new Fenetre();
+                         Fenetre a =new Fenetre(c.getu());
                          Admin n = new Admin();
                      } catch (ParseException ex) {
                          Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);

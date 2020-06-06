@@ -168,7 +168,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         add("North", nord);
         add("Center", p2);
       // Planning a= new Planning(z,23);
-       PlanningProf b=new PlanningProf(z);
+       Planning b=new Planning(z,22,2022);
        //a.setOpaque(true);
 
         add("Center", b);
