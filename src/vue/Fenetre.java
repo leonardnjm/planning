@@ -34,12 +34,8 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
     private final JPanel lu,ma,me,je,ve,sa; //panels de chaque jour
     private final JPanel p0, p1, nord, p2, p3, west,p;
     
-    
-    private final DatePicker datePicker1;
+   
     //headers
-    
-    private final JLabel nameBDD;
-    private final JTextField nameBDDTexte;
     private final JButton local;
 
     /**
@@ -66,13 +62,12 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
        // listeDeRequetes = new java.awt.List(10, false);
 
         //Initialisation du calendrier
-            datePicker1 = new DatePicker();
-            add(datePicker1);
+           
        
        
         // creation des textes
 
-        nameBDDTexte = new JTextField();
+       
         
         lu = new JPanel();
         ma = new JPanel();
@@ -92,7 +87,6 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         samedi = new JLabel("Samedi", JLabel.CENTER);
 
         //header
-        nameBDD = new JLabel("nom base :", JLabel.CENTER);
         
         // creation des panneaux
         p0 = new JPanel();
@@ -112,12 +106,18 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
 
         // ajout des objets graphqiues dans les panneaux
 
+        Header header = new Header();
+        header.setBounds(20, 20, 300, 300);
+       // header.setPreferredSize(new Dimension(300, 300));
+
         
-        //affichage header
-        p0.add(datePicker1);
-        p0.add(nameBDD);
-        p0.add(nameBDDTexte);
-        p0.add(local);
+       //affichage header
+        
+          p0.add(header);
+//        p0.add(datePicker1);
+//        p0.add(nameBDD);
+//        p0.add(nameBDDTexte);
+//        p0.add(local);
         
         //affichage text
         p1.add(lundi);

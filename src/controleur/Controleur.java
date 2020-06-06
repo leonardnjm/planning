@@ -61,6 +61,28 @@ public class Controleur {
           Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
       }
   });
+  
+   login.getPasswordTextfield().addActionListener(b -> {
+      try {
+          saveInfo();
+      } catch (SQLException ex) {
+          Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (ClassNotFoundException ex) {
+          Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+      }
+   });
+      
+    login.getLoginTextfield().addActionListener(c -> {
+      try {
+         saveInfo();
+      } catch (SQLException ex) {
+          Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (ClassNotFoundException ex) {
+          Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+      }
+      
+  });
+   
   login.getExit().addActionListener(e -> exit());
   
  
@@ -92,8 +114,8 @@ public class Controleur {
                     this.droit=k.getDroit();
                     utilisateur=k;
              }
-                 else{
-                                              JOptionPane.showMessageDialog(new JFrame(),
+                 else {
+                  JOptionPane.showMessageDialog(new JFrame(),
                     "Email or Password are incorrect",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);   
@@ -123,7 +145,6 @@ public class Controleur {
              Controleur c = new Controleur(v,m);
              c.initController();
 
-             System.out.println("pass : " + m.getPasswd());
              while(c.getd()==0)
                  try {
                      Thread.sleep(3 * 1000);
@@ -160,7 +181,7 @@ public class Controleur {
     
 
 
-}
+    }
 }
 
 
