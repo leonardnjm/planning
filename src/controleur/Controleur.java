@@ -158,13 +158,17 @@ public class Controleur {
                  
                      case 1:
                  {
-                     try {
-                         //  Planning f = new Planning();
-                         Fenetre a =new Fenetre(c.getu());
-                         Admin n = new Admin();
-                     } catch (ParseException ex) {
-                         Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
-                     }
+                     
+                     Fenetre a =new Fenetre(c.getu());
+                     
+//                     try {
+//                         //  Planning f = new Planning();
+//                         
+//                         
+//                         Admin n = new Admin();
+//                     } catch (ParseException ex) {
+//                         Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+//                     }
                  }
                     
                          break;
