@@ -87,7 +87,7 @@ public class Header extends JPanel {
             add(datePicker1);
         
         
-         cours.setBackground(Color.gray);
+        cours.setBackground(Color.gray);
         viescolaire.setBackground(Color.gray);
         promo.setBackground(Color.gray);
         salles.setBackground(Color.GRAY);

@@ -5,20 +5,22 @@
 package controleur;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import vue.Fenetre;
 import vue.Login;
 import modele.Utilisateur;
+
+
 import vue.Cours;
+import vue.Admin;
+
 
 import javax.swing.JOptionPane;
 import modele.DAO;
 import modele.UtilisateurDAO;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-//test
 
 
 
@@ -106,6 +108,7 @@ public class Controleur {
 
              k=classeDao.trouver(utilisateur.getEmail());
              
+             
              if(utilisateur.getPasswd().equals(k.getPasswd()))
              {
                     this.droit=k.getDroit();
@@ -136,7 +139,7 @@ public class Controleur {
              // creation de la fenetre
              
              Utilisateur m = new Utilisateur();
-          
+                
              Login v = new Login("Log in");
              Controleur c = new Controleur(v,m);
              c.initController();
@@ -150,13 +153,26 @@ public class Controleur {
                  switch (c.getd()){
                  
                      case 1:
-                       //  Planning f = new Planning();
-                         Fenetre a =new Fenetre();
+                 {
+                     try {
+                         //  Planning f = new Planning();
+                         
+                         //  Fenetre a =new Fenetre();
+                         Admin n = new Admin();
+                     } catch (ParseException ex) {
+                         Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                 }
+                    
                          break;
+
                 
                      case 2:
+                         
+                
                         
                          break;
+
                          
                      case 3:
                         
@@ -170,12 +186,6 @@ public class Controleur {
 
                          
                  }
-             // Cours a= new Cours();
-             //  Fenetre f = new Fenetre();
-   
-    
-
-
     }
 }
 

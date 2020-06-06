@@ -5,10 +5,12 @@
  */
 package vue;
 
+import com.github.lgooddatepicker.components.DatePicker;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.text.NumberFormat;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -22,66 +24,79 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import javax.swing.*;
+import javax.swing.JTabbedPane;
+import javax.swing.ImageIcon;
+
+
 /**
  *
  * @author Raphael
  */
 public class Admin extends JFrame{
-  private JPanel top = new JPanel();
-  private JFormattedTextField sem = new JFormattedTextField(NumberFormat.getIntegerInstance());
-   private JTextField da = new JTextField();
-  private JFormattedTextField hdeb = new JFormattedTextField(NumberFormat.getIntegerInstance());
-  private JFormattedTextField hfin = new JFormattedTextField(NumberFormat.getIntegerInstance());
-  private JTextField etat = new JTextField();
-  private JTextField cours = new JTextField();
-  private JTextField type = new JTextField();
-  private JLabel label = new JLabel("Semaine");
-  private JLabel label1 = new JLabel("heure debut");
-  private JLabel label2 = new JLabel("heure fin");
-  private JLabel label3 = new JLabel("etat");
-  private JLabel label4 = new JLabel("cours");
-  private JLabel label5 = new JLabel("type");
-  private JLabel label6 = new JLabel("date");
-SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-Date date;
-  private JButton b = new JButton ("AJOUTER UNE SEANCE");
+    
 
+  //SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+//Date date;
+ 
+private JButton b = new JButton ("AJOUTER UNE SEANCE");
+
+    
     
     public Admin() throws ParseException{
-    this.setTitle("LEOO");
-    this.setSize(300, 300);
+        
+    
+    this.setTitle("Admin");
+    this.setSize(500, 500);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
-    top.setBackground(Color.red);
-    top.setLayout(new BorderLayout());
-     sem.setPreferredSize(new Dimension(150, 30));
-     da.setPreferredSize(new Dimension(150, 30));
-     hdeb.setPreferredSize(new Dimension(150, 30));
-     hfin.setPreferredSize(new Dimension(150, 30));
-     etat.setPreferredSize(new Dimension(150, 30));
-     cours.setPreferredSize(new Dimension(150, 30));
-     type.setPreferredSize(new Dimension(150, 30));
-
-JPanel container = new JPanel();
-    container.add(label,BorderLayout.CENTER);
-    container.add(sem,BorderLayout.CENTER);
-    container.add(label1);
-    container.add(hdeb);
-    container.add(label2);
-    container.add(hfin);
-    container.add(label3);
-    container.add(etat);
-    container.add(label4);
-    container.add(cours);
-    container.add(label5);
-    container.add(type);
-    container.add(label6);
-    container.add(da);
-    String mechante=da.getText();
     
-        date = (Date) formatter.parse(da.getText());
-System.out.println(date);
-this.add(container);
-    this.setVisible(true);            
+                 JTabbedPane tabbedPane = new JTabbedPane();
+        ImageIcon icon = createImageIcon("/images/test.png");
+        AdminAjoute ajoute = new AdminAjoute();
+        
+        JComponent panel1 = ajoute;
+        tabbedPane.addTab("Ajouter Cours", icon, panel1,
+                "Ajouter cours pour un eleve ou prof");
+        tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+        
+        JComponent panel2 = makeTextPanel("remplacer par fonction");
+        tabbedPane.addTab("Acceder aux cours", icon, panel2,
+                "Acceder a tout les cours");
+        tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+        
+        JComponent panel3 = makeTextPanel("remplacer par fonction");
+        tabbedPane.addTab("Annule un cours", icon, panel3,
+                "Annule un cours d'un eleve ou prof");
+        tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+        
+        //Add the tabbed pane to this panel.
+        add(tabbedPane);
+        this.setVisible(true);
+        
+        
+        //The following line enables to use scrolling tabs.
+        tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+    }
+    
+    protected JComponent makeTextPanel(String text) {
+        JPanel panel = new JPanel(false);
+        JLabel filler = new JLabel(text);
+        filler.setHorizontalAlignment(JLabel.CENTER);
+        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
+    }
+    
+    /** Returns an ImageIcon, or null if the path was invalid. */
+    protected static ImageIcon createImageIcon(String path) {
+        java.net.URL imgURL = Admin.class.getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
+
   }       
-}
+
