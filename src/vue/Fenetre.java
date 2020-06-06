@@ -17,6 +17,7 @@ import com.github.lgooddatepicker.components.DateTimePicker;
 import com.github.lgooddatepicker.components.TimePicker;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import com.github.lgooddatepicker.components.TimePickerSettings.TimeArea;
+import modele.Utilisateur;
 
 /**
  *
@@ -44,7 +45,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
     /**
      * Constructeur qui initialise tous les objets graphiques de la fenetre
      */
-    public Fenetre() {
+    public Fenetre(Utilisateur z) {
 
         // creation par heritage de la fenetre
         super("Hyperplanning");
@@ -166,10 +167,11 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         // disposition geographique des panneaux
         add("North", nord);
         add("Center", p2);
-       Planning a= new Planning();
+      // Planning a= new Planning(z,23);
+       PlanningProf b=new PlanningProf(z);
        //a.setOpaque(true);
 
-        add("Center", a);
+        add("Center", b);
         add("South", p3);
         add("West",p);
         

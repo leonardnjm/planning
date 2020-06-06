@@ -3,37 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Seance_sallesDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Seance.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/SalleDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/vue/Fenetre.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Enseignant.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Connexion.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Promotion.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Utilisateur.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Type_cours.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/vue/Cours.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/vue/Login.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Seance_enseignantsDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/EnseignantDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/SeanceDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/controleur/Controleur.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Seance_groupes.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Site.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Cours.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/SiteDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/vue/code_segado.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Seance_salles.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/EtudiantDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/CoursDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/UtilisateurDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Salle.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Seance_enseignants.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/DAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Type_coursDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Seance_groupesDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/PromotionDAO.java</file>
-            <file>file:/C:/Users/Leo/Desktop/planning/src/modele/Etudiant.java</file>
+            <file>file:/C:/Users/Raphael/Desktop/Projet%20java/planning/src/vue/Fenetre.java</file>
+            <file>file:/C:/Users/Raphael/Desktop/Projet%20java/planning/src/vue/PlanningProf.java</file>
+            <file>file:/C:/Users/Raphael/Desktop/Projet%20java/planning/src/controleur/Controleur.java</file>
+            <file>file:/C:/Users/Raphael/Desktop/Projet%20java/planning/src/vue/Planning.java</file>
+            <file>file:/C:/Users/Raphael/Desktop/Projet%20java/planning/src/vue/Cours.java</file>
+            <file>file:/C:/Users/Raphael/Desktop/Projet%20java/planning/src/vue/code_segado.java</file>
+            <file>file:/C:/Users/Raphael/Desktop/Projet%20java/planning/nbproject/project.properties</file>
         </group>
     </open-files>
 </project-private>
