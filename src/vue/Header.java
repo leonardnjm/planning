@@ -14,6 +14,8 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,10 +25,9 @@ import java.util.logging.Logger;
  */
 public class Header extends JPanel { 
     
-    private final JButton cours, viescolaire, promo, salles;
-    private final JButton edt, recap;
+    private final JButton valider;
     
-    private final JComboBox enGrille, pourQui;
+    private final JComboBox enGrille, pourQui,type;
     
     private final DatePicker datePicker1;
     
@@ -34,23 +35,23 @@ public class Header extends JPanel {
     
     public Header() {
     
-            Object[] choix = new Object[]{ "En grille", "En liste"};
+        Object[] choix = new Object[]{ "En grille", "En liste"};
         //creation des listes deroulantes
         enGrille= new JComboBox(choix);
         
         Object[] statut = new Object[]{ "Peronne", "ING3", "ING4", "ING3 GROUPE1", "..."};
         //creation des listes deroulantes
         pourQui= new JComboBox(statut);
+                        
         
-                cours = new JButton("Cours");
-        viescolaire = new JButton("Vie Scolaire");
-        promo = new JButton("Promotion");
-        salles = new JButton("Salles");
+        Object[] t = new Object[]{ "Emploi du temps", "Recapitulatif" };
+        //creation des listes deroulantes
+        type = new JComboBox(t);
         
        // cours.setPreferredSize(new Dimension(150, 120));
         
-        edt = new JButton("Emploi du temps");
-        recap = new JButton("Recapitulatif");
+
+        valider = new JButton("Filtrer");
         
                 p1 = new JPanel();
                 p2 = new JPanel();
@@ -66,16 +67,13 @@ public class Header extends JPanel {
                 nord.setLayout(new GridLayout(3,1));
                 
                 
-         p2.add(cours);
-        p2.add(viescolaire);
-        p2.add(promo);
-        p2.add(salles);
         
-        p1.add(edt);
-        p1.add(recap);
+        p1.add(type);
         
         pann.add(enGrille);
         pann.add(pourQui);
+        
+       // p2.add(valider);
         
         nord.add("North", p2);
 
@@ -83,23 +81,44 @@ public class Header extends JPanel {
          
         nord.add("North", pann);
         
-            datePicker1 = new DatePicker();
-            add(datePicker1);
+        datePicker1 = new DatePicker();
+        add(datePicker1);
         
-        
-        cours.setBackground(Color.gray);
-        viescolaire.setBackground(Color.gray);
-        promo.setBackground(Color.gray);
-        salles.setBackground(Color.GRAY);
-        edt.setBackground(Color.gray);
-        recap.setBackground(Color.gray);
+
+        type.setBackground(Color.gray);
+         
+        valider.addActionListener(new Header.BoutonListener());
   
-        
         this.add(pann);
         this.add(p1);
         this.add(p2);
+        this.add(valider);
         
         this.setVisible(true);
+        
 }
+    
+    class BoutonListener implements ActionListener{
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+     
+      ///recuperation date
+      ZoneId defaultZoneId = ZoneId.systemDefault();
+      LocalDate d= datePicker1.getDate();
+      java.util.Date date = java.util.Date.from(d.atStartOfDay(defaultZoneId).toInstant());
+      
+        ///recuperation liste
+       String choix= enGrille.getSelectedItem().toString();  
+       
+       ///recuperation du groupe
+       String groupe = pourQui.getSelectedItem().toString();
+       
+       ///recuperation du groupe
+       String types = type.getSelectedItem().toString();
+               
+     //  System.out.println("" + date +""+choix+""+groupe+""+types);
+                
+    }
+  }
     
 }
