@@ -92,7 +92,10 @@ public class Controleur {
   private int getd(){
       return droit;
   }
-   private void exit(){
+  private Utilisateur getu(){
+      return utilisateur;
+  }
+  private void exit(){
        System.exit(0);
    }
  
@@ -112,6 +115,7 @@ public class Controleur {
              if(utilisateur.getPasswd().equals(k.getPasswd()))
              {
                     this.droit=k.getDroit();
+                    utilisateur=k;
              }
                  else {
                   JOptionPane.showMessageDialog(new JFrame(),
