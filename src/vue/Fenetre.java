@@ -349,8 +349,8 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent evt) {
-              //  System.exit(0); // tout fermer 
-              dispose();    //On ferme juste la fenetre active
+               System.exit(0); // tout fermer 
+             // dispose();    //On ferme juste la fenetre active
             }
         });
     }

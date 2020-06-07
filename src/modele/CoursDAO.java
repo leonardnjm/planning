@@ -38,7 +38,7 @@ public class CoursDAO extends DAO<Cours>{
     @Override
     public void update(Cours obj) {
         try {
-            prepstmt=conna.prepareStatement("UPDATE INTO cours SET nom = ? WHERE id = ?");
+            prepstmt=conna.prepareStatement("UPDATE cours SET nom = ? WHERE id = ?");
             prepstmt.setInt(1, obj.getid()); 
             prepstmt.setString(2, obj.getnom());
             prepstmt.executeUpdate();

@@ -17,7 +17,7 @@ public class Seance {
     private Date date;
     private int heure_debut;
     private int heure_fin;
-    private int etat;
+    private String etat;
     private int id_cours;
     private int id_type;
     
@@ -27,11 +27,11 @@ public class Seance {
         date=new Date(2002,10,20);
         heure_debut=1;
         heure_fin=1;
-        etat=0;
+        etat="test";
         id_cours=1;
         id_type=1;     
     }
-    public Seance(int i,int s,Date d, int deb,int fin,int e,int c,int t){
+    public Seance(int i,int s,Date d, int deb,int fin,String e,int c,int t){
         id=i;
         semaine=s;
         date=d;
@@ -56,7 +56,7 @@ public class Seance {
     public int getfin(){
         return heure_fin;
     }
-    public int getetat(){
+    public String getetat(){
         return etat;
     }
     public int getidcours(){
@@ -86,7 +86,7 @@ public class Seance {
         this.heure_fin = heure_fin;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
 
