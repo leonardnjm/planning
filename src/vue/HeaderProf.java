@@ -6,33 +6,35 @@
 package vue;
 
 import com.github.lgooddatepicker.components.DatePicker;
-import javax.accessibility.Accessible;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
-import javax.swing.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
 import modele.Connexion;
 import modele.Utilisateur;
 
 /**
  *
- * @author Leo
+ * @author Raphael
  */
-public class Header extends JPanel { 
+public class HeaderProf extends JPanel { 
     
     private final JButton valider;
     
-    private final JComboBox enGrille, pourQui,type;
+    private final JComboBox enGrille;
     
     private final DatePicker datePicker1;
     
@@ -42,7 +44,7 @@ public class Header extends JPanel {
     private ResultSet rset;
     private PreparedStatement prepstmt;
     private Connection conna;
-    public Header(Utilisateur z) {
+    public HeaderProf(Utilisateur z) {
         
         try {             
             maconnexion=new Connexion("planning","root","");
@@ -58,14 +60,7 @@ public class Header extends JPanel {
         //creation des listes deroulantes
         enGrille= new JComboBox(choix);
         
-        Object[] statut = new Object[]{ "TD", "PROMO"};
-        //creation des listes deroulantes
-        pourQui= new JComboBox(statut);
-                        
-        
-        Object[] t = new Object[]{ "Emploi du temps", "Recapitulatif" };
-        //creation des listes deroulantes
-        type = new JComboBox(t);
+       
         
        // cours.setPreferredSize(new Dimension(150, 120));
         
@@ -87,10 +82,8 @@ public class Header extends JPanel {
                 
                 
         
-        p1.add(type);
         
         pann.add(enGrille);
-        pann.add(pourQui);
         
        // p2.add(valider);
         
@@ -104,9 +97,8 @@ public class Header extends JPanel {
         add(datePicker1);
         datePicker1.setDateToToday();
 
-        type.setBackground(Color.gray);
          
-        valider.addActionListener(new Header.BoutonListener());
+        valider.addActionListener(new HeaderProf.BoutonListener());
   
         this.add(pann);
         this.add(p1);
@@ -124,68 +116,39 @@ public class Header extends JPanel {
     
     class BoutonListener implements ActionListener{
     @Override
-    public void actionPerformed(ActionEvent arg0) {
-
-        String prom = "";
-        try {
-            prepstmt=conna.prepareStatement("SELECT promotion.nom "
-                    + " FROM `promotion`, utilisateurs, etudiant, groupe "
-                    + " WHERE utilisateurs.ID="+a.getId()
-                    + " AND etudiant.ID_utilisateur=utilisateurs.ID"
-                    + " AND groupe.ID=etudiant.ID_groupe"
-                    + " AND promotion.ID=groupe.ID_prom");
-            rset=prepstmt.executeQuery();
-                    while(rset.next())
-                    {
-                        prom=rset.getString(1);
-                    }
-        
-
-      ///recuperation date
-      ZoneId defaultZoneId = ZoneId.systemDefault();
-      LocalDate d= datePicker1.getDate();
-      Date date = Date.from(d.atStartOfDay(defaultZoneId).toInstant());
-      Calendar cal= Calendar.getInstance();
-      cal.setTime(date);
-      int f = cal.get(Calendar.WEEK_OF_YEAR);
-        ///recuperation liste
-       String choix= enGrille.getSelectedItem().toString();  
-       
-       ///recuperation du groupe
-       String groupe = pourQui.getSelectedItem().toString();
-       
-       ///recuperation du groupe
-       String types = type.getSelectedItem().toString();
-       Utilisateur z=a;
-     
-        Fenetre k;
-        Liste a;
-        if(types.equals("Emploi du temps"))
-        {         
+    public void actionPerformed(ActionEvent arg0) {       
+            
+            
+            ///recuperation date
+            ZoneId defaultZoneId = ZoneId.systemDefault();
+            LocalDate d= datePicker1.getDate();
+            Date date = Date.from(d.atStartOfDay(defaultZoneId).toInstant());
+            Calendar cal= Calendar.getInstance();
+            cal.setTime(date);
+            int f = cal.get(Calendar.WEEK_OF_YEAR);
+            ///recuperation liste
+            String choix= enGrille.getSelectedItem().toString();
+            
+            ///recuperation du groupe
+            
+            ///recuperation du groupe
+            Utilisateur z=a;
+            
+            FenetreProf k;
+            ListeProf a;
+            
             if(choix.equals("En grille"))
-            { 
-                if(groupe.equals("TD"))
-                {
-                    k = new Fenetre(z,f);                    
-                }
-                else
-                {
-                if(choix.equals("En grille"))
-                { 
-                    k = new Fenetre(z,f,prom);
-                }
-                }            
+            {                
+                k = new FenetreProf(z,f);                      
             }
             else
             {
-                 a=new Liste(z);
+                a=new ListeProf(z,f);
             }
             
         }
       
-    } catch (SQLException ex) {
-            Logger.getLogger(Header.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
   }   
 }
+

@@ -53,9 +53,7 @@ public class PlanningProf  extends JPanel{
 
             Calendar cal = Calendar.getInstance();
         cal.setTime(today);
-        int dayOfYear = cal.get(Calendar.DAY_OF_YEAR); 
-        int iweek=dayOfYear/7;
-
+        int iweek = cal.get(Calendar.WEEK_OF_YEAR);
 
         /*    prepstmt=conna.prepareStatement(" SELECT seance.*"
                     + " FROM seance,seances_groupes,groupe,etudiant,utilisateurs" 
@@ -175,20 +173,11 @@ public class PlanningProf  extends JPanel{
             }
              ArrayList<Placement> place = new ArrayList<Placement>();
 
- 
 
-
-        /*    prepstmt=conna.prepareStatement(" SELECT seance.*"
-                    + " FROM seance,seances_groupes,groupe,etudiant,utilisateurs" 
-                    + " WHERE etudiant.ID_utilisateur="+u.getId()
-                    + " AND groupe.ID=etudiant.ID_groupe" 
-                   + " AND seances_groupes.ID_groupe=groupe.ID" 
-                   + " AND seance.ID=seances_groupes.ID_seance");
-*/
         ZoneId defaultZoneId = ZoneId.systemDefault();
      prepstmt=conna.prepareStatement("SELECT seance.date,seance.heure_debut,groupe.Nom,seance.etat,cours.nom,salle.nom,site.nom,type_cours.nom,promotion.nom" 
                     + " FROM `seance`,`seances_groupes`,`groupe`,`cours`,`enseignant`,`salle`,`site`,`type_cours`,`seance_salles`,`seance_enseignants`,`promotion`" 
-                    + " WHERE enseignant.ID_utilisateur="+u.getId()
+                    + " WHERE enseignant.ID_utilisateur=2"//+u.getId()
                     + " AND cours.ID=enseignant.ID_cours"
                     + " AND seance_enseignants.ID_enseignant=enseignant.ID_utilisateur"
                     + " AND seance.ID=seance_enseignants.ID_seance"

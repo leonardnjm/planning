@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import modele.DAO;
 import modele.UtilisateurDAO;
 import javax.swing.JFrame;
+import vue.FenetreProf;
 
 
 
@@ -176,7 +177,7 @@ public class Controleur {
                 
                      case 2:
                          
-                
+                      FenetreProf a =new FenetreProf(c.getu());
                         
                          break;
 

@@ -39,7 +39,6 @@ public class Planning extends JPanel{
     private PreparedStatement prepstmt;
     private Connection conna;
     private ResultSetMetaData rsetMeta;
-    private ArrayList<String> liste;    
     private Date today = new Date();
 
     public Planning(Utilisateur u){
@@ -53,10 +52,9 @@ public class Planning extends JPanel{
             }
              ArrayList<Placement> place = new ArrayList<Placement>();
 
-            Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         cal.setTime(today);
-        int dayOfYear = cal.get(Calendar.DAY_OF_YEAR); 
-        int iweek=dayOfYear/7;
+        int iweek = cal.get(Calendar.WEEK_OF_YEAR); 
 
         /*    prepstmt=conna.prepareStatement(" SELECT seance.*"
                     + " FROM seance,seances_groupes,groupe,etudiant,utilisateurs" 
@@ -85,7 +83,6 @@ public class Planning extends JPanel{
 
             rset=prepstmt.executeQuery();
                     rsetMeta = rset.getMetaData();
-        liste = new ArrayList<>();
         while (rset.next()) {
             Calendar cala = Calendar.getInstance();
             LocalDate localDate = LocalDate.parse(rset.getString(1));
@@ -186,7 +183,6 @@ public class Planning extends JPanel{
 
             rset=prepstmt.executeQuery();
                     rsetMeta = rset.getMetaData();
-        liste = new ArrayList<>();
         while (rset.next()) {
             Calendar cala = Calendar.getInstance();
             LocalDate localDate = LocalDate.parse(rset.getString(1));
@@ -214,6 +210,8 @@ public class Planning extends JPanel{
                 // a.setBorder(blackline);
                 //a.setBackground(new Color(200,0,0,125));
                 //a.setOpaque(false);
+                if(place.size()!=0)
+                {
                 if(i==place.get(l).getp())
                 {
                     this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType()));      
@@ -222,6 +220,22 @@ public class Planning extends JPanel{
                        l++;   
                     }
                 }
+                else{
+                if(i%2==0)
+                {
+                    
+                    a.setBackground(Color.LIGHT_GRAY);
+                    a.setBorder(matteborder);
+                    this.add(a);
+                }
+                if(i%2==1)
+                {
+                    a.setBackground(Color.white);
+                    a.setBorder(matteborder);
+                    this.add(a);
+                }
+                }
+          }
                 else{
                 if(i%2==0)
                 {
@@ -248,7 +262,7 @@ public class Planning extends JPanel{
     
     
     
-    public Planning(Utilisateur u,int s,int prom){
+    public Planning(Utilisateur u,int s,String prom){
         try {
             try {
                 maconnexion=new Connexion("planning","root","");
@@ -291,7 +305,6 @@ public class Planning extends JPanel{
 
             rset=prepstmt.executeQuery();
                     rsetMeta = rset.getMetaData();
-        liste = new ArrayList<>();
         while (rset.next()) {
             Calendar cala = Calendar.getInstance();
             LocalDate localDate = LocalDate.parse(rset.getString(1));
@@ -312,6 +325,8 @@ public class Planning extends JPanel{
                 // a.setBorder(blackline);
                 //a.setBackground(new Color(200,0,0,125));
                 //a.setOpaque(false);
+                if(place.size()!=0)
+                {
                 if(i==place.get(l).getp())
                 {
                     this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType(),place.get(l).getNomProm()));      
@@ -319,6 +334,22 @@ public class Planning extends JPanel{
                     {
                        l++;   
                     }
+                }
+                else{
+                if(i%2==0)
+                {
+                    
+                    a.setBackground(Color.LIGHT_GRAY);
+                    a.setBorder(matteborder);
+                    this.add(a);
+                }
+                if(i%2==1)
+                {
+                    a.setBackground(Color.white);
+                    a.setBorder(matteborder);
+                    this.add(a);
+                }
+                }
                 }
                 else{
                 if(i%2==0)

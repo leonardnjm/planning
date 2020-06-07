@@ -7,7 +7,6 @@ package vue;
 
 import java.awt.Component;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +16,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +25,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import modele.Connexion;
-import modele.Placement;
 import modele.PlacementLigne;
 import modele.Utilisateur;
 
@@ -35,8 +32,8 @@ import modele.Utilisateur;
  *
  * @author Raphael
  */
-public class Liste extends JFrame{
-    private Connexion maconnexion;
+public class ListeProf extends JFrame{
+     private Connexion maconnexion;
     private ResultSet rset;
     private PreparedStatement prepstmt;
     private Connection conna;
@@ -44,10 +41,10 @@ public class Liste extends JFrame{
     private ArrayList<String> liste;    
     private Date today = new Date();
     
-    public Liste(Utilisateur u)
+    public ListeProf(Utilisateur u,int s)
     {
     
-        this.setTitle("Liste");
+    this.setTitle("Liste");
     this.setSize(500, 500);
     //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
@@ -65,35 +62,36 @@ public class Liste extends JFrame{
         Calendar cal = Calendar.getInstance();
         cal.setTime(today);
         int iweek = cal.get(Calendar.WEEK_OF_YEAR);
+                System.out.println(" Premier :"+iweek);
+
                ZoneId defaultZoneId = ZoneId.systemDefault();
-     prepstmt=conna.prepareStatement("SELECT seance.date,seance.heure_debut,seance.etat,cours.nom,utilisateurs.nom,salle.nom,site.nom,type_cours.nom"
-                    + " FROM `seance`,`seances_groupes`,`groupe`,`etudiant`,`utilisateurs`, cours, enseignant ,salle, site, type_cours,seance_salles, seance_enseignants"
-                    + " WHERE etudiant.ID_utilisateur="+u.getId()
-                    + " AND groupe.ID=etudiant.ID_groupe"
-                    + " AND seances_groupes.ID_groupe=groupe.ID"
-                    + " AND seance.ID=seances_groupes.ID_seance"
-                    + " AND seance.semaine="+iweek
+      prepstmt=conna.prepareStatement("SELECT seance.date,seance.heure_debut,groupe.Nom,seance.etat,cours.nom,salle.nom,site.nom,type_cours.nom,promotion.nom" 
+                    + " FROM `seance`,`seances_groupes`,`groupe`,`cours`,`enseignant`,`salle`,`site`,`type_cours`,`seance_salles`,`seance_enseignants`,`promotion`" 
+                    + " WHERE enseignant.ID_utilisateur=2"//+u.getId()
+                    + " AND cours.ID=enseignant.ID_cours"
+                    + " AND seance_enseignants.ID_enseignant=enseignant.ID_utilisateur"
+                    + " AND seance.ID=seance_enseignants.ID_seance"
+                    + " AND seance.semaine="+s
                     + " AND cours.ID=seance.ID_cours"
-                    + " AND type_cours.ID=seance.ID_type"
+                    + " AND seances_groupes.ID_seance=seance.ID"
+                    + " AND groupe.ID=seances_groupes.ID_groupe"
+                    + " AND promotion.ID=groupe.ID_prom"
                     + " AND seance_salles.ID_seance=seance.ID"
                     + " AND salle.ID=seance_salles.ID_salle"
                     + " AND site.ID=salle.ID_site"
-                    + " AND seance_enseignants.ID_seance=seance.ID"
-                    + " AND enseignant.ID_utilisateur=seance_enseignants.ID_enseignant"
-                    + " AND utilisateurs.ID=enseignant.ID_utilisateur");
+                    + " AND type_cours.ID=seance.ID_type");
 
-
-            rset=prepstmt.executeQuery();
-            rsetMeta = rset.getMetaData();
-            
+        rset=prepstmt.executeQuery();
+        rsetMeta = rset.getMetaData();    
         while (rset.next()) {
             Calendar cala = Calendar.getInstance();
             LocalDate localDate = LocalDate.parse(rset.getString(1));
             Date a = Date.from(localDate.atStartOfDay(defaultZoneId).toInstant());
             cala.setTime(a);
             int dayOfWeek = cala.get(Calendar.DAY_OF_WEEK); 
-            place.add(new PlacementLigne(a,dayOfWeek,Integer.parseInt(rset.getString(2)),rset.getString(3),rset.getString(4),rset.getString(5),rset.getString(6),rset.getString(7),rset.getString(8)));
+            place.add(new PlacementLigne(a,dayOfWeek,Integer.parseInt(rset.getString(2)),rset.getString(3),rset.getString(4),rset.getString(8),rset.getString(5),rset.getString(6),rset.getString(7)));
         }  
+                    System.out.println("Veuillez saisir un mmmmmmmot :"+place.size());
         
         JPanel Lundi = new JPanel();
         BoxLayout layout1 = new BoxLayout(Lundi, BoxLayout.Y_AXIS);

@@ -43,7 +43,19 @@ public class SeanceDAO extends DAO<Seance>{
 
     @Override
     public void update(Seance obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        try {
+//            prepstmt=conna.prepareStatement("UPDATE INTO cours SET nom = ? WHERE id = ?");
+//            prepstmt.setInt(1, obj.getid()); 
+//            prepstmt.setInt(2, obj.getsemaine());
+//            prepstmt.setDate(3, obj.getdate());
+//            prepstmt.setString(2, obj.getsemaine());
+//            prepstmt.setString(2, obj.getsemaine());
+//            prepstmt.setString(2, obj.getsemaine());
+//            prepstmt.setString(2, obj.getsemaine());
+//            prepstmt.executeUpdate();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CoursDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }    
     }
 
     @Override
