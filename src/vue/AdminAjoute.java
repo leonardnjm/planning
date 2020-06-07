@@ -348,6 +348,7 @@ try {
             a.setHeure_fin(h+1);
             a.setId_cours(idcours);
             a.setId_type(idtype);
+            a.setEtat("valide");
             seance.create(a);
            ///SEANCE_GROUPE
            Seance_groupes  b = new Seance_groupes();

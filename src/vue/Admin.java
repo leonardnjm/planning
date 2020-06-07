@@ -57,14 +57,14 @@ private JButton b = new JButton ("AJOUTER UNE SEANCE");
        
         AdminAnul anul = new AdminAnul();
         AdminModif modif = new AdminModif();
-        
+        AdminListe liste =new AdminListe();
         JComponent panel1 = ajoute;
         tabbedPane.addTab("Ajouter Cours", icon, panel1,
                 "Ajouter cours pour un eleve ou prof");
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
     //    System.out.println("Veuillez saisir un mot :");
 
-        JComponent panel2 = makeTextPanel("remplacer par fonction");
+        JComponent panel2 = liste;
         tabbedPane.addTab("Acceder aux cours", icon, panel2,
                 "Acceder a tout les cours");
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
