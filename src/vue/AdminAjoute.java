@@ -235,8 +235,8 @@ setVisible(true);
        
        ///recuperation de l'heure du debut
        String heure = jf7.getSelectedItem().toString();
-              
-        System.out.println("" + date +"" + cours+ ""+prof+ ""+promo+ ""+groupe+ ""+type+ ""+salle+""+site+""+heure);
+       
+      //  System.out.println("" + date +"" + cours+ ""+prof+ ""+promo+ ""+groupe+ ""+type+ ""+salle+""+site+""+heure);
         
         
 

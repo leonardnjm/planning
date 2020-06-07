@@ -106,7 +106,7 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
 
         // ajout des objets graphqiues dans les panneaux
 
-        Header header = new Header();
+        Header header = new Header(z);
         header.setBounds(20, 20, 300, 300);
        // header.setPreferredSize(new Dimension(300, 300));
 
@@ -194,8 +194,8 @@ public class Fenetre extends JFrame implements ActionListener, ItemListener {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent evt) {
-              //  System.exit(0); // tout fermer 
-              dispose();    //On ferme juste la fenetre active
+               System.exit(0); // tout fermer 
+             // dispose();    //On ferme juste la fenetre active
             }
         });
     }

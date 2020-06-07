@@ -46,13 +46,17 @@ private JButton b = new JButton ("AJOUTER UNE SEANCE");
         
     
     this.setTitle("Admin");
-    this.setSize(500, 500);
+    this.setSize(700, 500);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
     
-                 JTabbedPane tabbedPane = new JTabbedPane();
+        JTabbedPane tabbedPane = new JTabbedPane();
         ImageIcon icon = createImageIcon("/images/test.png");
         AdminAjoute ajoute = new AdminAjoute();
+        
+       
+        AdminAnul anul = new AdminAnul();
+        AdminModif modif = new AdminModif();
         
         JComponent panel1 = ajoute;
         tabbedPane.addTab("Ajouter Cours", icon, panel1,
@@ -64,10 +68,15 @@ private JButton b = new JButton ("AJOUTER UNE SEANCE");
                 "Acceder a tout les cours");
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
         
-        JComponent panel3 = makeTextPanel("remplacer par fonction");
+        JComponent panel3 = anul;
         tabbedPane.addTab("Annule un cours", icon, panel3,
                 "Annule un cours d'un eleve ou prof");
         tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+        
+        JComponent panel4 = modif;
+        tabbedPane.addTab("Modifier un cours", icon, panel4,
+                "Modifer l'heure d'une seance");
+        tabbedPane.setMnemonicAt(3, KeyEvent.VK_3);
         
         //Add the tabbed pane to this panel.
         add(tabbedPane);

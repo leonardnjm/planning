@@ -13,11 +13,11 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
-import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modele.Utilisateur;
 
 /**
  *
@@ -32,8 +32,11 @@ public class Header extends JPanel {
     private final DatePicker datePicker1;
     
      private final JPanel p1, p2, pann, nord;
+     private Utilisateur a;
     
-    public Header() {
+    public Header(Utilisateur b) {
+        
+        a=b;
     
         Object[] choix = new Object[]{ "En grille", "En liste"};
         //creation des listes deroulantes
@@ -83,6 +86,7 @@ public class Header extends JPanel {
         
         datePicker1 = new DatePicker();
         add(datePicker1);
+            datePicker1.setDateToToday();
         
 
         type.setBackground(Color.gray);
@@ -105,7 +109,12 @@ public class Header extends JPanel {
       ///recuperation date
       ZoneId defaultZoneId = ZoneId.systemDefault();
       LocalDate d= datePicker1.getDate();
-      java.util.Date date = java.util.Date.from(d.atStartOfDay(defaultZoneId).toInstant());
+        Date date = Date.from(d.atStartOfDay(defaultZoneId).toInstant());
+      
+      Calendar cal= Calendar.getInstance();
+      cal.setTime(date);
+      int f = cal.get(Calendar.WEEK_OF_YEAR);
+      
       
         ///recuperation liste
        String choix= enGrille.getSelectedItem().toString();  
@@ -116,8 +125,11 @@ public class Header extends JPanel {
        ///recuperation du groupe
        String types = type.getSelectedItem().toString();
                
-     //  System.out.println("" + date +""+choix+""+groupe+""+types);
-                
+   //    System.out.println("" + f +""+choix+""+groupe+""+types);
+           
+           Fenetre k;
+           k=new Fenetre(a);          
+   
     }
   }
     
