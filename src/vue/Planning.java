@@ -104,34 +104,75 @@ public class Planning extends JPanel{
             this.setLayout(new GridLayout(11, 6));
             Border matteborder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.gray);
 
+             int g=place.size();
+            g=g-1;
+            int w=0;
             for(int i=0; i<66; i++){
                 JPanel a=new JPanel();
                 // Border blackline=BorderFactory.createLineBorder(Color.yellow);
                 // a.setBorder(blackline);
                 //a.setBackground(new Color(200,0,0,125));
                 //a.setOpaque(false);
-                if(i==place.get(l).getp())
+                if(place.size()!=l)
                 {
-                    this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType()));      
-                    if(l+1<place.size())
+                
+                    if(i==place.get(l).getp())
                     {
-                       l++;   
+                         if(l+1<place.size())
+                         {
+                               if(place.get(l).getp()==place.get(l+1).getp())
+                               {
+                                   //ca superpose
+                                    this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType(),place.get(l).getNomProm(),place.get(l+1).getNomCours(),place.get(l+1).getNomProf(),place.get(l+1).getEt(),place.get(l+1).getNomSalle(),place.get(l+1).getNomSite(),place.get(l+1).getNomType(),place.get(l+1).getNomProm()));      
+                                    l++;
+                                    l++;
+                                }
+                                else{
+                                    this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType()));      
+
+                                    if(l+1<place.size())
+                                        {
+                                           l++;   
+                                        }
+                                    }
+                        }
+                        else{                      
+                               this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType()));      
+
+                                if(l+1<place.size())
+                                    {
+                                        l++;   
+                                    }
+                            }
                     }
+                    else{
+                        if(i%2==0)
+                            {
+                                a.setBackground(Color.LIGHT_GRAY);
+                                a.setBorder(matteborder);
+                                this.add(a);
+                            }
+                        if(i%2==1)
+                            {
+                                a.setBackground(Color.white);
+                                a.setBorder(matteborder);
+                                this.add(a);
+                            }
+                        }
                 }
                 else{
-                if(i%2==0)
-                {
-                    
-                    a.setBackground(Color.LIGHT_GRAY);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
-                if(i%2==1)
-                {
-                    a.setBackground(Color.white);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
+                    if(i%2==0)
+                    {
+                        a.setBackground(Color.LIGHT_GRAY);
+                        a.setBorder(matteborder);
+                        this.add(a);
+                    }
+                    if(i%2==1)
+                    {
+                        a.setBackground(Color.white);
+                        a.setBorder(matteborder);
+                        this.add(a);
+                    }
                 }
             }
             //     this.setOpaque(false);
@@ -203,53 +244,75 @@ public class Planning extends JPanel{
             int l=0;
             this.setLayout(new GridLayout(11, 6));
             Border matteborder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.gray);
-
+           int g=place.size();
+            g=g-1;
+            int w=0;
             for(int i=0; i<66; i++){
                 JPanel a=new JPanel();
                 // Border blackline=BorderFactory.createLineBorder(Color.yellow);
                 // a.setBorder(blackline);
                 //a.setBackground(new Color(200,0,0,125));
                 //a.setOpaque(false);
-                if(place.size()!=0)
+                if(place.size()!=l)
                 {
-                if(i==place.get(l).getp())
-                {
-                    this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType()));      
-                    if(l+1<place.size())
+                
+                    if(i==place.get(l).getp())
                     {
-                       l++;   
+                         if(l+1<place.size())
+                         {
+                               if(place.get(l).getp()==place.get(l+1).getp())
+                               {
+                                   //ca superpose
+                                    this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType(),place.get(l).getNomProm(),place.get(l+1).getNomCours(),place.get(l+1).getNomProf(),place.get(l+1).getEt(),place.get(l+1).getNomSalle(),place.get(l+1).getNomSite(),place.get(l+1).getNomType(),place.get(l+1).getNomProm()));      
+                                     l++;
+                                    l++;
+                                }
+                                else{
+                                       this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType()));      
+
+                                    if(l+1<place.size())
+                                        {
+                                           l++;   
+                                        }
+                                    }
+                        }
+                        else{                      
+                                                   this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType()));      
+
+                                if(l+1<place.size())
+                                    {
+                                        l++;   
+                                    }
+                            }
                     }
+                    else{
+                        if(i%2==0)
+                            {
+                                a.setBackground(Color.LIGHT_GRAY);
+                                a.setBorder(matteborder);
+                                this.add(a);
+                            }
+                        if(i%2==1)
+                            {
+                                a.setBackground(Color.white);
+                                a.setBorder(matteborder);
+                                this.add(a);
+                            }
+                        }
                 }
                 else{
-                if(i%2==0)
-                {
-                    
-                    a.setBackground(Color.LIGHT_GRAY);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
-                if(i%2==1)
-                {
-                    a.setBackground(Color.white);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
-                }
-          }
-                else{
-                if(i%2==0)
-                {
-                    
-                    a.setBackground(Color.LIGHT_GRAY);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
-                if(i%2==1)
-                {
-                    a.setBackground(Color.white);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
+                    if(i%2==0)
+                    {
+                        a.setBackground(Color.LIGHT_GRAY);
+                        a.setBorder(matteborder);
+                        this.add(a);
+                    }
+                    if(i%2==1)
+                    {
+                        a.setBackground(Color.white);
+                        a.setBorder(matteborder);
+                        this.add(a);
+                    }
                 }
             }
             //     this.setOpaque(false);
@@ -272,19 +335,9 @@ public class Planning extends JPanel{
                 Logger.getLogger(Planning.class.getName()).log(Level.SEVERE, null, ex);
             }
              ArrayList<Placement> place = new ArrayList<Placement>();
-
-        
-
              
-
-        
-
-
-
-
-
         ZoneId defaultZoneId = ZoneId.systemDefault();
-     prepstmt=conna.prepareStatement("SELECT seance.date,seance.heure_debut,seance.etat,cours.nom,utilisateurs.nom,salle.nom,site.nom,type_cours.nom,groupe.Nom"
+        prepstmt=conna.prepareStatement("SELECT seance.date,seance.heure_debut,seance.etat,cours.nom,utilisateurs.nom,salle.nom,site.nom,type_cours.nom,groupe.Nom"
                     + " FROM `seance`,`seances_groupes`,`groupe`,`utilisateurs`, cours, enseignant ,salle, site, type_cours,seance_salles, seance_enseignants, promotion"
                     + " WHERE promotion.nom="+prom
                     + " AND groupe.ID_prom=promotion.ID"
@@ -318,6 +371,9 @@ public class Planning extends JPanel{
             int l=0;
             this.setLayout(new GridLayout(11, 6));
             Border matteborder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.gray);
+            int g=place.size();
+            g=g-1;
+            int w=0;
 
             for(int i=0; i<66; i++){
                 JPanel a=new JPanel();
@@ -325,48 +381,69 @@ public class Planning extends JPanel{
                 // a.setBorder(blackline);
                 //a.setBackground(new Color(200,0,0,125));
                 //a.setOpaque(false);
-                if(place.size()!=0)
+                if(place.size()!=l)
                 {
-                if(i==place.get(l).getp())
-                {
-                    this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType(),place.get(l).getNomProm()));      
-                    if(l+1<place.size())
+                
+                    if(i==place.get(l).getp())
                     {
-                       l++;   
+                         if(l+1<place.size())
+                         {
+                               if(place.get(l).getp()==place.get(l+1).getp())
+                               {
+                                   //ca superpose
+                                    this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType(),place.get(l).getNomProm(),place.get(l+1).getNomCours(),place.get(l+1).getNomProf(),place.get(l+1).getEt(),place.get(l+1).getNomSalle(),place.get(l+1).getNomSite(),place.get(l+1).getNomType(),place.get(l+1).getNomProm()));      
+                                    l++;
+                                    l++;
+                                    System.out.println("Veuillez saisir un mot qqqqqqqqqqqq:");
+
+                                }
+                                else{
+                                    this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType(),place.get(l).getNomProm()));      
+                                    if(l+1<place.size())
+                                        {
+                                           l++;   
+                                        }
+                                    }
+                        }
+                        else{                      
+                                this.add(new Cours(place.get(l).getNomCours(),place.get(l).getNomProf(),place.get(l).getEt(),place.get(l).getNomSalle(),place.get(l).getNomSite(),place.get(l).getNomType(),place.get(l).getNomProm()));      
+                                if(l+1<place.size())
+                                    {
+                                        l++;   
+                                    }
+                            }
+                    }
+                    else{
+                        if(i%2==0)
+                            {
+                                a.setBackground(Color.LIGHT_GRAY);
+                                a.setBorder(matteborder);
+                                this.add(a);
+                            }
+                        if(i%2==1)
+                            {
+                                a.setBackground(Color.white);
+                                a.setBorder(matteborder);
+                                this.add(a);
+                            }
+                        }
+                }
+                else{
+                    if(i%2==0)
+                    {
+                        a.setBackground(Color.LIGHT_GRAY);
+                        a.setBorder(matteborder);
+                        this.add(a);
+                    }
+                    if(i%2==1)
+                    {
+                        a.setBackground(Color.white);
+                        a.setBorder(matteborder);
+                        this.add(a);
                     }
                 }
-                else{
-                if(i%2==0)
-                {
-                    
-                    a.setBackground(Color.LIGHT_GRAY);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
-                if(i%2==1)
-                {
-                    a.setBackground(Color.white);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
-                }
-                }
-                else{
-                if(i%2==0)
-                {
-                    
-                    a.setBackground(Color.LIGHT_GRAY);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
-                if(i%2==1)
-                {
-                    a.setBackground(Color.white);
-                    a.setBorder(matteborder);
-                    this.add(a);
-                }
-                }
             }
+
             //     this.setOpaque(false);
             //this.setBackground(new Color(200,0,0,200));
             this.setVisible(true);
@@ -377,4 +454,4 @@ public class Planning extends JPanel{
                
 }
 
-
+          

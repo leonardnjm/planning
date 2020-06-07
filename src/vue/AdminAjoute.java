@@ -15,6 +15,10 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -22,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modele.Connexion;
 import modele.DAO;
 import modele.Seance;
 import modele.SeanceDAO;
@@ -31,6 +36,7 @@ import modele.Seance_groupes;
 import modele.Seance_groupesDAO;
 import modele.Seance_salles;
 import modele.Seance_sallesDAO;
+import modele.Utilisateur;
 
 /**
  *
@@ -40,7 +46,11 @@ public class AdminAjoute extends JPanel{
     
     private final DatePicker datePicker1;
    // private final String a;
-  
+      private Connexion maconnexion;
+    private ResultSet rset;
+    private PreparedStatement prepstmt;
+    private Connection conna;
+    private ResultSetMetaData rsetMeta;
     
              Object[] matiere = new Object[]{"Maths", "Physique","Informatique","Electronique"};
              Object[] type = new Object[]{ "magistral", "Zoom","TD","projet"};
@@ -219,8 +229,26 @@ setVisible(true);
  class BoutonListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent arg0) {
-     
+     int idcours=0;
+     int idtype=0;
+     int idgroupe=0;
+     int idsalle=0;
+     int idprof=0;
+     int id=0;
         try {
+                DAO<Seance> seance = new SeanceDAO();
+                DAO<Seance_enseignants> seanceen = new Seance_enseignantsDAO();
+                DAO<Seance_groupes> seancegr = new Seance_groupesDAO();
+                DAO<Seance_salles> seancesa = new Seance_sallesDAO();
+try {
+                maconnexion=new Connexion("planning","root","");
+                conna=maconnexion.getco();
+            
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Planning.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
             ///recuperation date
             ZoneId defaultZoneId = ZoneId.systemDefault();
             LocalDate d= datePicker1.getDate();
@@ -233,25 +261,67 @@ setVisible(true);
             
             ///recuperation nom du cours
             String cours= jf2.getSelectedItem().toString();
-            
+            prepstmt=conna.prepareStatement("SELECT cours.id"
+            + " FROM `cours`"
+            + " WHERE cours.nom='"+cours+"'");
+            rset=prepstmt.executeQuery();
+        if(rset.first())
+        {                              
+            idcours=Integer.parseInt(rset.getString(1));
+
+        }
             ///recuperation nom du prof
             String prof = jf3.getText();
-            
+
+            prepstmt=conna.prepareStatement("SELECT utilisateurs.id"
+            + " FROM `utilisateurs`"
+            + " WHERE utilisateurs.nom='"+prof+"'");
+            rset=prepstmt.executeQuery();
+            rsetMeta = rset.getMetaData();
+        if(rset.first())
+        {                           
+            idprof=Integer.parseInt(rset.getString(1));
+        }
             ///recuperation promo
             String promo = jf8.getSelectedItem().toString();
             
             ///recuperation Groupe
             String groupe = jf9.getSelectedItem().toString();
-            
+             prepstmt=conna.prepareStatement("SELECT groupe.id"
+            + " FROM `groupe`"
+            + " WHERE groupe.nom='"+groupe+"'");
+            rset=prepstmt.executeQuery();
+            rsetMeta = rset.getMetaData();
+        if(rset.first())
+        {                              
+            idgroupe=Integer.parseInt(rset.getString(1));
+        }           
             ///recuperation type de cours
             String type = jf4.getSelectedItem().toString();
-            
+            prepstmt=conna.prepareStatement("SELECT type_cours.id"
+            + " FROM `type_cours`"
+            + " WHERE type_cours.nom='"+type+"'");
+            rset=prepstmt.executeQuery();
+            rsetMeta = rset.getMetaData();
+        if(rset.first())
+        {                              
+            idtype=Integer.parseInt(rset.getString(1));
+        }
             ///recuperation du site
             String site = jf5.getSelectedItem().toString();
             
             ///recuperation de la salle
             String salle = jf6.getText();
             
+            prepstmt=conna.prepareStatement("SELECT salle.id"
+            + " FROM `salle`"
+            + " WHERE salle.nom='"+salle+"'");
+            rset=prepstmt.executeQuery();
+            rsetMeta = rset.getMetaData();
+        if(rset.first())
+        {                              
+            idsalle=Integer.parseInt(rset.getString(1));
+        }            
             ///recuperation de l'heure du debut
             String heure = jf7.getSelectedItem().toString();
             
@@ -259,39 +329,44 @@ setVisible(true);
             
             // int k=Integer.parseInt(id);
             int h=Integer.parseInt(heure);
-           
+            
+            prepstmt=conna.prepareStatement("SELECT seance.*"
+            + " FROM `seance`");
+            rset=prepstmt.executeQuery();
+            rsetMeta = rset.getMetaData();
+            while(rset.next())
+            {                              
+                id++;
+            }   
+            id++;
             ///SEANCE
-            Seance a=new Seance();
-            DAO<Seance> seance = new SeanceDAO();
-       
-           
+            Seance a=new Seance();       
+            a.setId(id);
             a.setDate(sDate);
             a.setSemaine(f);
             a.setHeure_debut(h);
             a.setHeure_fin(h+1);
-         
-          
-            ///SEANCE_GROUPE
+            a.setId_cours(idcours);
+            a.setId_type(idtype);
+            seance.create(a);
+           ///SEANCE_GROUPE
            Seance_groupes  b = new Seance_groupes();
-           DAO<Seance_groupes> seance_groupes = new Seance_groupesDAO();
        
-//            b.setId_seance();
-//            b.setId_groupe();
-            
+            b.setId_seance(id);
+            b.setId_groupe(idgroupe);
+            seancegr.create(b);
             ///SEANCE_ENSEIGNANTS
            Seance_enseignants  c = new Seance_enseignants();
-           Seance_enseignantsDAO seance_enseignants = new Seance_enseignantsDAO();
            
-//            c.setId_seance();
-//            c.setId_enseignant();
-       
+            c.setId_seance(id);
+            c.setId_enseignant(idprof);
+            seanceen.create(c);
            ///SEANCE_SALES
            Seance_salles e = new Seance_salles();
-           Seance_sallesDAO seance_salles = new Seance_sallesDAO();
              
-//           e.setId_seance();
-//           e.setId_salle();
-           
+           e.setId_seance(id);
+           e.setId_salle(idsalle);
+           seancesa.create(e);
            
        
         } catch (SQLException ex) {

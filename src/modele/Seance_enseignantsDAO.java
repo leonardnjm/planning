@@ -6,6 +6,8 @@
 package modele;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +20,14 @@ public class Seance_enseignantsDAO extends DAO<Seance_enseignants>{
      } 
     @Override
     public void create(Seance_enseignants obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    try {
+            prepstmt=conna.prepareStatement("INSERT INTO seance_enseignants VALUES (?, ?)");
+            prepstmt.setInt(1, obj.getId_seance());
+            prepstmt.setInt(2, obj.getId_enseignant());
+            prepstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SeanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }
 
     @Override

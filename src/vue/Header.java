@@ -182,6 +182,17 @@ public class Header extends JPanel {
             }
             
         }
+        else{
+            EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Chart demo = new Chart("Recapitulatif",z);
+                demo.pack();
+                demo.setVisible(true);
+                demo.start();
+            }
+        });
+        }
       
     } catch (SQLException ex) {
             Logger.getLogger(Header.class.getName()).log(Level.SEVERE, null, ex);
