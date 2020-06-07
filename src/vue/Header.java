@@ -109,7 +109,7 @@ public class Header extends JPanel {
       ///recuperation date
       ZoneId defaultZoneId = ZoneId.systemDefault();
       LocalDate d= datePicker1.getDate();
-        Date date = Date.from(d.atStartOfDay(defaultZoneId).toInstant());
+      Date date = Date.from(d.atStartOfDay(defaultZoneId).toInstant());
       
       Calendar cal= Calendar.getInstance();
       cal.setTime(date);

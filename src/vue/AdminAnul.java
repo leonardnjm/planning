@@ -11,9 +11,12 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -23,6 +26,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import modele.DAO;
+import modele.Seance;
+import modele.SeanceDAO;
 
 /**
  *
@@ -122,11 +128,24 @@ setVisible(true);
     @Override
  public void actionPerformed(ActionEvent arg0) {
    
-       ///recuperation nom du prof
-       String id = jf3.getText();
-             
-      //  System.out.println("" + date +"" + cours+ ""+prof+ ""+promo+ ""+groupe+ ""+type+ ""+salle+""+site+""+heure);
-        
+        try {
+            ///recuperation nom du prof
+            String id = jf3.getText();
+            //convertir id en entier
+            int k=Integer.parseInt(id);  
+            Seance a=new Seance();
+            DAO<Seance> s = new SeanceDAO();
+            
+            a=s.find(k);
+            a.setEtat("ANNULE");
+            s.update(a);
+            
+                     
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminAnul.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminAnul.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

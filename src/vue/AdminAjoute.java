@@ -15,9 +15,22 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modele.DAO;
+import modele.Seance;
+import modele.SeanceDAO;
+import modele.Seance_enseignants;
+import modele.Seance_enseignantsDAO;
+import modele.Seance_groupes;
+import modele.Seance_groupesDAO;
+import modele.Seance_salles;
+import modele.Seance_sallesDAO;
 
 /**
  *
@@ -27,7 +40,7 @@ public class AdminAjoute extends JPanel{
     
     private final DatePicker datePicker1;
    // private final String a;
-    
+  
     
              Object[] matiere = new Object[]{"Maths", "Physique","Informatique","Electronique"};
              Object[] type = new Object[]{ "magistral", "Zoom","TD","projet"};
@@ -207,38 +220,86 @@ setVisible(true);
     @Override
     public void actionPerformed(ActionEvent arg0) {
      
-      ///recuperation date
-      ZoneId defaultZoneId = ZoneId.systemDefault();
-      LocalDate d= datePicker1.getDate();
-      Date date = Date.from(d.atStartOfDay(defaultZoneId).toInstant());
+        try {
+            ///recuperation date
+            ZoneId defaultZoneId = ZoneId.systemDefault();
+            LocalDate d= datePicker1.getDate();
+            java.util.Date date = Date.from(d.atStartOfDay(defaultZoneId).toInstant());
+            java.sql.Date sDate= new java.sql.Date(date.getTime());
+            
+            Calendar cal= Calendar.getInstance();
+            cal.setTime(date);
+            int f = cal.get(Calendar.WEEK_OF_YEAR);
+            
+            ///recuperation nom du cours
+            String cours= jf2.getSelectedItem().toString();
+            
+            ///recuperation nom du prof
+            String prof = jf3.getText();
+            
+            ///recuperation promo
+            String promo = jf8.getSelectedItem().toString();
+            
+            ///recuperation Groupe
+            String groupe = jf9.getSelectedItem().toString();
+            
+            ///recuperation type de cours
+            String type = jf4.getSelectedItem().toString();
+            
+            ///recuperation du site
+            String site = jf5.getSelectedItem().toString();
+            
+            ///recuperation de la salle
+            String salle = jf6.getText();
+            
+            ///recuperation de l'heure du debut
+            String heure = jf7.getSelectedItem().toString();
+            
+            //  System.out.println("" + date +"" + cours+ ""+prof+ ""+promo+ ""+groupe+ ""+type+ ""+salle+""+site+""+heure);
+            
+            // int k=Integer.parseInt(id);
+            int h=Integer.parseInt(heure);
+           
+            ///SEANCE
+            Seance a=new Seance();
+            DAO<Seance> seance = new SeanceDAO();
+       
+           
+            a.setDate(sDate);
+            a.setSemaine(f);
+            a.setHeure_debut(h);
+            a.setHeure_fin(h+1);
+         
+          
+            ///SEANCE_GROUPE
+           Seance_groupes  b = new Seance_groupes();
+           DAO<Seance_groupes> seance_groupes = new Seance_groupesDAO();
+       
+//            b.setId_seance();
+//            b.setId_groupe();
+            
+            ///SEANCE_ENSEIGNANTS
+           Seance_enseignants  c = new Seance_enseignants();
+           Seance_enseignantsDAO seance_enseignants = new Seance_enseignantsDAO();
+           
+//            c.setId_seance();
+//            c.setId_enseignant();
+       
+           ///SEANCE_SALES
+           Seance_salles e = new Seance_salles();
+           Seance_sallesDAO seance_salles = new Seance_sallesDAO();
+             
+//           e.setId_seance();
+//           e.setId_salle();
+           
+           
+       
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminAjoute.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminAjoute.class.getName()).log(Level.SEVERE, null, ex);
+        }
       
-        ///recuperation nom du cours
-       String cours= jf2.getSelectedItem().toString();  
-       
-       ///recuperation nom du prof
-       String prof = jf3.getText();
-       
-       ///recuperation promo
-       String promo = jf8.getSelectedItem().toString();
-       
-       ///recuperation Groupe
-       String groupe = jf9.getSelectedItem().toString();
-       
-       ///recuperation type de cours
-       String type = jf4.getSelectedItem().toString();
-       
-       ///recuperation du site
-       String site = jf5.getSelectedItem().toString();
-       
-       ///recuperation de la salle
-       String salle = jf6.getText();
-       
-       ///recuperation de l'heure du debut
-       String heure = jf7.getSelectedItem().toString();
-       
-      //  System.out.println("" + date +"" + cours+ ""+prof+ ""+promo+ ""+groupe+ ""+type+ ""+salle+""+site+""+heure);
-        
-        
 
     }
   }

@@ -10,6 +10,9 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,6 +22,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import modele.DAO;
+import modele.Seance;
+import modele.SeanceDAO;
 
 /**
  *
@@ -67,11 +73,11 @@ public class AdminModif extends JPanel{
         //set border boxes
        jf3.setAlignmentX(Component.LEFT_ALIGNMENT);
        jf3.setAlignmentY(Component.TOP_ALIGNMENT);
-        jf3.setBorder(BorderFactory.createCompoundBorder(jf3.getBorder(),BorderFactory.createEmptyBorder(7,7,7,7)));
+       jf3.setBorder(BorderFactory.createCompoundBorder(jf3.getBorder(),BorderFactory.createEmptyBorder(7,7,7,7)));
         
-        jf4.setAlignmentX(Component.LEFT_ALIGNMENT);
+       jf4.setAlignmentX(Component.LEFT_ALIGNMENT);
        jf4.setAlignmentY(Component.TOP_ALIGNMENT);
-        jf4.setBorder(BorderFactory.createCompoundBorder(jf3.getBorder(),BorderFactory.createEmptyBorder(7,7,7,7)));
+       jf4.setBorder(BorderFactory.createCompoundBorder(jf3.getBorder(),BorderFactory.createEmptyBorder(7,7,7,7)));
 
         jf3.setColumns(3);
       
@@ -130,12 +136,32 @@ setVisible(true);
     @Override
   public void actionPerformed(ActionEvent arg0) {
    
-       ///recuperation nom du prof
-       String id = jf3.getText();
-       
-       ///recuperation promo
-       String heure = jf4.getSelectedItem().toString();      
-      //  System.out.println("" + date +"" + cours+ ""+prof+ ""+promo+ ""+groupe+ ""+type+ ""+salle+""+site+""+heure);
+        try {
+            ///recuperation nom du prof
+            String id = jf3.getText();
+            
+            ///recuperation promo
+            String heure = jf4.getSelectedItem().toString();
+              
+            
+            int k=Integer.parseInt(id);
+            int h=Integer.parseInt(heure);
+            Seance a=new Seance();
+            DAO<Seance> s = new SeanceDAO();
+            
+            a=s.find(k);
+            a.setHeure_debut(h);
+            a.setHeure_fin(h+1);
+            
+            s.update(a);
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminModif.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminModif.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
         
     }
  
